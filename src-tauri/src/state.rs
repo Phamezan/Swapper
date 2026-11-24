@@ -281,6 +281,7 @@ struct AccountView {
     region: Option<String>,
     profile_icon_id: Option<i64>,
     icon_data_url: Option<String>,
+    launch_target: Option<vault::LaunchTarget>,
 }
 
 #[derive(Clone, Serialize)]
@@ -290,6 +291,7 @@ pub(crate) struct AppView {
     active_id: Option<Uuid>,
     is_switching: bool,
     use_deceive: bool,
+    launch_target: vault::LaunchTarget,
     riot_exe: Option<String>,
     riot_detected: bool,
     deceive_detected: bool,
@@ -340,11 +342,13 @@ pub(crate) fn view(
                 region: a.region.clone(),
                 profile_icon_id: a.profile_icon_id,
                 icon_data_url: vault::profile_icon_data_url(a.id),
+                launch_target: a.launch_target,
             })
             .collect(),
         active_id: config.active_id,
         is_switching,
         use_deceive: config.use_deceive,
+        launch_target: config.launch_target,
         riot_exe: config.riot_exe.clone(),
         riot_detected: riot::riot_path(config).is_some(),
         deceive_detected: riot::deceive_path(config, bundled_deceive).is_some(),

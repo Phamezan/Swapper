@@ -10,7 +10,7 @@ import { RuneIcon } from "../runes/RuneIcon";
 import { SpellIcon } from "../runes/SpellIcon";
 import { fmtAgo } from "../runes/types";
 import { useChampionArt } from "./art";
-import { benchKey, defaultQueue, deltaText, formatStat, meter, MIN_COMPARED, newestFirst, smoothPath, opponent, playTime, rankProgress, supportVision, tierLabel, tiles, today, tone, visionGap } from "./dashboardModel";
+import { benchKey, defaultQueue, deltaText, formatStat, gaugeArc, gaugePoint, meter, MIN_COMPARED, newestFirst, smoothPath, opponent, playTime, rankProgress, supportVision, tierLabel, tiles, today, tone, visionGap } from "./dashboardModel";
 import type { AccountCard, Bench, Game, LpPoint, Mmr, RoleRecord, Snapshot } from "./types";
 type ChampionRecord = Snapshot["summaries"][string]["champions"][number];
 import { Slot } from "./ui/Slot";
@@ -239,34 +239,50 @@ function useRankEmblem(tier: string) {
 
 function RankCard({ snapshot, stale }: { snapshot: Snapshot; stale: boolean }) {
   const rank = snapshot.rank;
-  const emblem = useRankEmblem(crestSlug(rank?.tier));
-  const progress = rank && rankProgress(rank);
   const total = rank ? rank.wins + rank.losses : 0;
   const queue = <small>Ranked Solo/Duo{stale && ` · saved ${fmtAgo(snapshot.fetchedAt)}`}</small>;
   if (!rank) return <section className="panel rank-card" aria-label="Ranked progress">
     <div className="card-head"><h2>Unranked</h2>{queue}</div>
     <p className="rank-empty">Finish placements to see progress.</p>
   </section>;
+  const name = `${titleCase(rank.tier)} ${rank.division}`.trim();
   return <section className="panel rank-card" data-tier={crestSlug(rank.tier)} aria-label="Ranked progress">
     <div className="rank-layout">
     <div className="rank-summary">
-    {emblem && <span className="rank-emblem" style={{ backgroundImage: `url("${emblem}")` }} aria-hidden />}
-    <div className="card-head">
-      {!emblem && <RankCrest tier={crestSlug(rank.tier)} size={56} mode="desktop" />}
-      {queue}<h2>{`${titleCase(rank.tier)} ${rank.division}`.trim()}</h2><b className="rank-lp">{rank.lp}<small>LP</small></b>
-    </div>
-    {total > 0 && <div className="rank-record" aria-label={`${pct(rank.wins, total)}% win rate, ${rank.wins} wins, ${rank.losses} losses`}>
-      <strong className={rank.wins * 2 >= total ? "up" : "down"}>{pct(rank.wins, total)}%<small>WR</small></strong>
-      <div className="rank-record-bar" aria-hidden><i style={{ width: `${100 * rank.wins / total}%` }} /></div>
-      <span aria-hidden><b className="up">{rank.wins}W</b><b className="down">{rank.losses}L</b></span>
-    </div>}
-    <div className="rank-progress">
-      {progress!.next && <div className="lp-bar" role="progressbar" aria-label={`${progress!.toNext} LP to ${progress!.next}`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress!.lp}><i style={{ width: `${progress!.lp}%` }} /></div>}
-      <p><span>{progress!.next ? `${progress!.toNext} LP to ${progress!.next}` : "Apex tier"}</span></p>
-    </div>
+      <RankGauge rank={rank} name={name} />
+      <div className="rank-id">
+        {queue}<h2>{name}</h2><b className="rank-lp">{rank.lp}<small>LP</small></b>
+        {total > 0 && <div className="rank-record" aria-label={`${pct(rank.wins, total)}% win rate, ${rank.wins} wins, ${rank.losses} losses`}>
+          <strong className={rank.wins * 2 >= total ? "up" : "down"}>{pct(rank.wins, total)}%<small>WR</small></strong>
+          <span aria-hidden><b className="up">{rank.wins}W</b><em>{total} games</em><b className="down">{rank.losses}L</b></span>
+          <div className="rank-record-bar" aria-hidden><i style={{ width: `${100 * rank.wins / total}%` }} /></div>
+        </div>}
+      </div>
     </div>
     <LpGraph history={snapshot.lpHistory} /></div>
   </section>;
+}
+
+/** The tier crest inside a 270° gauge: green is this division's LP, the rest of the arc is the next rank's
+ *  colour and ends in its crest. Apex tiers have no next step, so the whole arc takes the tier colour. */
+function RankGauge({ rank, name }: { rank: NonNullable<Snapshot["rank"]>; name: string }) {
+  const tier = crestSlug(rank.tier);
+  const emblem = useRankEmblem(tier);
+  const progress = rankProgress(rank);
+  const next = progress.nextTier ? crestSlug(progress.nextTier) : null;
+  const head = gaugePoint(progress.lp / 100), end = gaugePoint(1);
+  return <div className={`rank-gauge${next ? "" : " is-apex"}`} role="img" style={next ? { "--rank-next-tone": `var(--ui-tier-${next})` } as CSSProperties : undefined}
+    aria-label={next ? `${name}, ${rank.lp} LP, ${progress.toNext} LP to ${progress.next}` : `${name}, ${rank.lp} LP, apex tier`}>
+    <svg viewBox="0 0 200 200" aria-hidden>
+      <path className="rank-gauge-track" d={gaugeArc(0, 1)} />
+      {next && <><path className="rank-gauge-fill" d={gaugeArc(0, progress.lp / 100)} /><circle className="rank-gauge-head" cx={head.x} cy={head.y} r={5} /></>}
+    </svg>
+    {emblem ? <span className="rank-gauge-emblem" style={{ backgroundImage: `url("${emblem}")` }} aria-hidden /> : <RankCrest tier={tier} size={64} mode="desktop" />}
+    {next && <span className="rank-gauge-next" style={{ left: `${end.x / 2}%`, top: `${end.y / 2}%` }} aria-hidden>
+      <RankCrest tier={next} size={20} mode="desktop" />{progress.nextDivision && <em>{progress.nextDivision}</em>}
+    </span>}
+    <p className="rank-gauge-gap" aria-hidden>{next ? <><b>{progress.toNext} LP</b><span>to {progress.next}</span></> : <><b>{rank.lp} LP</b><span>Apex tier</span></>}</p>
+  </div>;
 }
 
 function Performance({ games, queue, onQueue, benches, tier, name }: {

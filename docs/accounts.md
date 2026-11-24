@@ -4,7 +4,7 @@
 
 1. Open Swapper. Right-click its tray icon and choose **Add Account**, or open the flyout and choose **Add account**.
 2. Sign in through the official Riot Client with **Stay signed in** selected. League does not need to be open. Swapper detects the Riot account, then offers **Save Account**. If that same account is already saved, it offers **Update Saved Account**.
-3. Left-click the Swapper tray icon to open your accounts. Left-click an account to switch. Right-click an account for **Switch to account**, **Edit nickname**, **Remove account**, and **Add account**. Removing an account asks for confirmation.
+3. Left-click the Swapper tray icon to open your accounts. Left-click an account to switch. Right-click an account for **Switch to account**, **Edit account**, **Remove account**, and **Add account**. Removing an account asks for confirmation.
 
 Do not use Riot Client's **Sign out** between saved accounts; it can invalidate a session that Swapper needs to restore. Use Swapper's **Sign in to another account** flow. If a saved session expires, sign back into that same account in Riot Client and update its saved session. Accounts created by older Swapper builds without a stored account identifier cannot be verified automatically; save a new verified entry before removing the old one.
 

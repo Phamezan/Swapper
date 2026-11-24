@@ -40,6 +40,38 @@ pub struct Account {
     #[serde(default)]
     pub nickname: Option<String>,
     pub vault_id: Uuid,
+    /// What opens after switching to this account; `None` follows the global setting.
+    #[serde(default)]
+    pub launch_target: Option<LaunchTarget>,
+}
+
+/// What a switch opens once Riot Client has signed in.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum LaunchTarget {
+    RiotClient,
+    #[default]
+    League,
+    Valorant,
+}
+
+impl LaunchTarget {
+    /// Riot Client product id, `None` when nothing is launched.
+    pub fn product(self) -> Option<&'static str> {
+        match self {
+            Self::RiotClient => None,
+            Self::League => Some("league_of_legends"),
+            Self::Valorant => Some("valorant"),
+        }
+    }
+
+    pub fn game_name(self) -> &'static str {
+        match self {
+            Self::RiotClient => "Riot Client",
+            Self::League => "League",
+            Self::Valorant => "VALORANT",
+        }
+    }
 }
 
 impl Account {
@@ -149,6 +181,9 @@ pub struct Config {
     /// Rune pages the user saved, by champion id, in the order they were saved.
     #[serde(default)]
     pub rune_presets: std::collections::BTreeMap<i64, Vec<SavedRunes>>,
+    /// What a switch opens unless the account overrides it. League by default.
+    #[serde(default)]
+    pub launch_target: LaunchTarget,
 }
 
 /// A rune page the user saved for one champion.
@@ -162,6 +197,11 @@ const MAX_RUNE_PRESETS: usize = 20;
 const MAX_PRESET_NAME: usize = 40;
 
 impl Config {
+    /// The account's own launch target, else the global one.
+    pub fn launch_target_for(&self, id: Uuid) -> LaunchTarget {
+        self.accounts.iter().find(|a| a.id == id).and_then(|a| a.launch_target).unwrap_or(self.launch_target)
+    }
+
     /// Saves `selection` as `name` for a champion; a preset with the same name is replaced.
     pub fn save_rune_preset(&mut self, champion_id: i64, name: &str, selection: crate::runes::RuneSelection) -> Result<(), String> {
         let name = name.trim();
@@ -843,6 +883,33 @@ pub fn restore(snapshot: &Snapshot) -> Result<(), String> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn launch_target_prefers_the_account_override_then_the_global_setting() {
+        let account = |launch_target| Account { id: Uuid::new_v4(), name: String::new(), puuid: None, game_name: None, tag_line: None,
+            platform: None, region: None, profile_icon_id: None, nickname: None, vault_id: Uuid::new_v4(), launch_target };
+        let mut config = Config::default();
+        let (plain, valorant) = (account(None), account(Some(LaunchTarget::Valorant)));
+        let (plain_id, valorant_id) = (plain.id, valorant.id);
+        config.accounts = vec![plain, valorant];
+        assert_eq!(config.launch_target_for(plain_id), LaunchTarget::League, "default is League");
+        assert_eq!(config.launch_target_for(valorant_id), LaunchTarget::Valorant);
+        config.launch_target = LaunchTarget::RiotClient;
+        assert_eq!(config.launch_target_for(plain_id), LaunchTarget::RiotClient, "no override follows the global setting");
+        assert_eq!(config.launch_target_for(valorant_id), LaunchTarget::Valorant, "override beats the global setting");
+        assert_eq!(config.launch_target_for(Uuid::new_v4()), LaunchTarget::RiotClient);
+    }
+
+    #[test]
+    fn old_configs_without_launch_targets_load_as_league() {
+        let id = Uuid::new_v4();
+        let json = format!(r#"{{"accounts":[{{"id":"{id}","vault_id":"{id}"}}],"active_id":null,"use_deceive":false,"riot_exe":null,"deceive_exe":null}}"#);
+        let config: Config = serde_json::from_str(&json).unwrap();
+        assert_eq!(config.launch_target, LaunchTarget::League);
+        assert_eq!(config.accounts[0].launch_target, None);
+        assert_eq!(config.launch_target_for(id), LaunchTarget::League);
+        assert_eq!(serde_json::to_string(&LaunchTarget::RiotClient).unwrap(), r#""riot_client""#);
+    }
 
     #[test]
     fn saves_replaces_and_deletes_rune_presets_per_champion() {

@@ -1,5 +1,5 @@
 use crate::identity::{self, Detection, DetectedIdentity};
-use crate::vault::{self, Account, Config};
+use crate::vault::{self, Account, Config, LaunchTarget};
 use crate::windows::process::{self, SnapshotError, StopError, StopOptions, StopReport};
 use std::path::{Path, PathBuf};
 use std::process::Command;
@@ -38,7 +38,8 @@ const GAMES: &[&str] = &[
 /// running and must not touch the live session.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum ProcessStateError {
-    GameRunning,
+    /// The running game's name, when the check saw which one.
+    GameRunning(Option<&'static str>),
     ClientStillRunning,
     InspectionFailed(SnapshotError),
 }
@@ -46,7 +47,8 @@ pub enum ProcessStateError {
 impl ProcessStateError {
     pub fn message(self) -> String {
         match self {
-            Self::GameRunning => "Close your game first, then switch accounts.".into(),
+            Self::GameRunning(Some(game)) => format!("{game} is running. Close it first."),
+            Self::GameRunning(None) => "Close your game first, then switch accounts.".into(),
             Self::ClientStillRunning => {
                 "Riot Client is still open. Close it fully, then try again.".into()
             }
@@ -59,11 +61,18 @@ impl ProcessStateError {
 }
 
 pub(crate) fn ensure_no_game() -> Result<(), ProcessStateError> {
-    match process::any_running(GAMES) {
-        Ok(true) => Err(ProcessStateError::GameRunning),
-        Ok(false) => Ok(()),
+    match process::matching(GAMES) {
+        Ok(running) => match running.first() {
+            Some(game) => Err(ProcessStateError::GameRunning(Some(game_name(&game.image)))),
+            None => Ok(()),
+        },
         Err(error) => Err(ProcessStateError::InspectionFailed(error)),
     }
+}
+
+/// Display name for an image in [`GAMES`].
+fn game_name(image: &str) -> &'static str {
+    if image.to_ascii_uppercase().starts_with("VALORANT") { "VALORANT" } else { "League of Legends" }
 }
 
 /// Whether any Riot client process is running; an unreadable process table
@@ -90,7 +99,7 @@ fn stop_clients() -> Result<StopReport, ProcessStateError> {
     };
     match process::stop_images(CLIENTS, GAMES, options) {
         Ok(report) => Ok(report),
-        Err(StopError::ForbiddenPresent) => Err(ProcessStateError::GameRunning),
+        Err(StopError::ForbiddenPresent) => Err(ProcessStateError::GameRunning(None)),
         Err(StopError::StillRunning(_)) => Err(ProcessStateError::ClientStillRunning),
         Err(StopError::EnumerationFailed(error)) => {
             Err(ProcessStateError::InspectionFailed(error))
@@ -181,21 +190,19 @@ fn launch(path: &Path, args: &[&str]) -> Result<(), String> {
     Ok(())
 }
 
-fn launch_selected(config: &Config, bundled_deceive: &Path) -> Result<(), String> {
+fn launch_selected(config: &Config, target: LaunchTarget, bundled_deceive: &Path) -> Result<(), String> {
     if config.use_deceive {
         let path = deceive_path(config, bundled_deceive)
             .ok_or("Deceive is missing. Reinstall Swapper.")?;
-        launch(&path, &["lol"])
+        // Deceive only proxies chat; the product itself is launched later through the Riot Client API.
+        launch(&path, &[if target == LaunchTarget::Valorant { "valorant" } else { "lol" }])
     } else {
         let path =
             riot_path(config).ok_or("Riot Client wasn't found. Set its path in Settings.")?;
-        launch(
-            &path,
-            &[
-                "--launch-product=league_of_legends",
-                "--launch-patchline=live",
-            ],
-        )
+        match target.product() {
+            Some(product) => launch(&path, &[&format!("--launch-product={product}"), "--launch-patchline=live"]),
+            None => launch(&path, &[]),
+        }
     }
 }
 
@@ -444,6 +451,7 @@ pub fn complete_add(config: &mut Config, identity: &DetectedIdentity) -> Result<
         profile_icon_id: identity.profile_icon_id,
         nickname: None,
         vault_id,
+        launch_target: None,
     };
     let previous_active = config.active_id;
     config.active_id = Some(account.id);
@@ -498,7 +506,7 @@ impl From<String> for SwitchFailure {
 /// never told a game is running when Swapper simply could not look.
 fn switch_failure(error: ProcessStateError) -> SwitchFailure {
     let kind = match error {
-        ProcessStateError::GameRunning => SwitchFailureKind::GameRunning,
+        ProcessStateError::GameRunning(_) => SwitchFailureKind::GameRunning,
         ProcessStateError::ClientStillRunning => SwitchFailureKind::ClientBusy,
         ProcessStateError::InspectionFailed(_) => SwitchFailureKind::InspectionFailed,
     };
@@ -592,7 +600,7 @@ pub fn switch_account(
     let restore_save_ms = t_restore.elapsed();
 
     let t_launch = Instant::now();
-    if let Err(e) = launch_selected(config, bundled_deceive) {
+    if let Err(e) = launch_selected(config, config.launch_target_for(id), bundled_deceive) {
         let rolled_back = roll_back_live(previous.as_ref());
         config.active_id = previous_active;
         let _ = vault::save(config);
@@ -883,6 +891,7 @@ pub(crate) mod tests {
             profile_icon_id: None,
             nickname: None,
             vault_id: Uuid::new_v4(),
+            launch_target: None,
         }
     }
 
@@ -1062,7 +1071,8 @@ pub(crate) mod tests {
     #[test]
     fn process_refusals_map_to_distinct_switch_failures() {
         let cases = [
-            (ProcessStateError::GameRunning, SwitchFailureKind::GameRunning),
+            (ProcessStateError::GameRunning(None), SwitchFailureKind::GameRunning),
+            (ProcessStateError::GameRunning(Some("VALORANT")), SwitchFailureKind::GameRunning),
             (ProcessStateError::ClientStillRunning, SwitchFailureKind::ClientBusy),
         ];
         for (error, kind) in cases {
@@ -1075,6 +1085,9 @@ pub(crate) mod tests {
             "an unreadable process table must never be reported as a running game"
         );
         assert!(unreadable.detail.contains("Nothing changed"));
+        let named = switch_failure(ProcessStateError::GameRunning(Some(game_name("VALORANT-Win64-Shipping.exe"))));
+        assert_eq!(named.detail, "VALORANT is running. Close it first.");
+        assert_eq!(game_name("League of Legends.exe"), "League of Legends");
     }
 
     // edge cases 10/11: a different live login is refused whatever way it is detected.

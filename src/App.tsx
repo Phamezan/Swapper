@@ -31,7 +31,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
     runesBusy, runesError, shopNotice, runeSession, native, showError, loadRunes, importItemBuild, launchFailed, setLaunchFailed,
     applyRunes, pickSpell, allowLanFirewall, setImportItemsWithRunes, setApplySpellsWithRunes,
     loadProBuilds, loadKeystoneBuild, loadMatchup, championApi, setAutoApply, setRuneTier,
-    setNotifications, setReadyCheckNotifications, installLtkManager, setRemote,
+    setNotifications, setReadyCheckNotifications, setLaunchTarget, installLtkManager, setRemote,
     setStartOnStartupSetting, navigate, startRepair, pageTitle, footerText, footerLoggedIn, manualPath,
     changeDeceive, deceivePrompt, setDeceivePrompt, restartClientNow, changeRiotPathMode, commitRiotPath, applyHotkey, browseRiotPath,
     toolsOpen, brandMode, otherMode, switchLabel, themed, modeName,
@@ -132,6 +132,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
               onSetHotkey={applyHotkey}
               onNotificationsChange={(enabled) => void setNotifications(enabled)}
               onReadyCheckChange={(enabled) => void setReadyCheckNotifications(enabled)}
+              onLaunchTargetChange={(target) => void setLaunchTarget(null, target)}
               koreanFont={koreanFont}
               customMods={customMods}
               customModsRiskAck={data.customModsRiskAck}

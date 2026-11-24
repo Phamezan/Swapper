@@ -7,6 +7,8 @@ import { HotkeySetting } from "./HotkeySetting";
 import { NotificationSettings } from "./NotificationSettings";
 import { RUN_EVENT } from "../onboarding/onboardingModel";
 import { WindowModeSettings } from "../full-app/WindowModeSettings";
+import { LaunchTargetPicker } from "./LaunchTargetPicker";
+import type { LaunchTarget } from "../app/types";
 
 type Props = {
   useDeceive: boolean;
@@ -33,6 +35,8 @@ type Props = {
   readyCheck: boolean;
   onNotificationsChange: (enabled: boolean) => void;
   onReadyCheckChange: (enabled: boolean) => void;
+  launchTarget: LaunchTarget;
+  onLaunchTargetChange: (target: LaunchTarget) => void;
   koreanFont: boolean;
   customMods: boolean;
   customModsRiskAck: boolean;
@@ -68,6 +72,8 @@ export function GeneralSettings({
   readyCheck,
   onNotificationsChange,
   onReadyCheckChange,
+  launchTarget,
+  onLaunchTargetChange,
   koreanFont,
   customMods,
   customModsRiskAck,
@@ -115,6 +121,9 @@ export function GeneralSettings({
         <Switch id="deceive-switch" checked={useDeceive} disabled={busy} onCheckedChange={onUseDeceiveChange} aria-label="Launch through Deceive" />
       </div>
       {deceiveNotice}
+
+      <p className="field-label">After switching, open</p>
+      <LaunchTargetPicker label="After switching, open" value={launchTarget} disabled={busy} onChange={(target) => onLaunchTargetChange(target ?? "league")} />
 
       <div className="setting-row">
         <div className="setting-copy">

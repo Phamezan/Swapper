@@ -388,6 +388,7 @@ Your settings file was not changed. Close programs that may be using it and star
                 commands::settings::set_notifications_enabled,
                 commands::remote::allow_lan_firewall,
                 commands::settings::set_ready_check_notifications,
+                commands::settings::set_launch_target,
                 client_restart::restart_plan,
                 client_health::client_health,
                 commands::settings::set_korean_font,

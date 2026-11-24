@@ -40,7 +40,7 @@ const loadMatchup = (championId: number, enemyChampionId: number, position: stri
 // The tier list renders this many rows at first, then more as the page is scrolled.
 const ROW_STEP = 40;
 type SortKey = "rank" | "winPct" | "pickPct" | "banPct" | "games";
-const columns: [SortKey | null, string][] = [["rank", "Rank"], [null, "Champion"], [null, "Role"], [null, "Tier"], ["winPct", "Win rate"], ["pickPct", "Pick rate"], ["banPct", "Ban rate"], ["games", "Games"]];
+const columns: [SortKey | null, string, string][] = [["rank", "Rank", "col-rank"], [null, "Champion", "col-champ"], [null, "Tier", "col-tier"], ["winPct", "Win rate", "col-wr"], ["pickPct", "Pick rate", "col-num"], ["banPct", "Ban rate", "col-num"], ["games", "Games", "col-num"]];
 
 export type ChampionFocus = { champion: ChampionOption | null; matchup?: { enemy: number; lane: string; section?: GuideSectionId } };
 
@@ -307,10 +307,13 @@ export default function Champions({ matchups, focus, onSelectionChange, onOpenVo
       {list && !query && <div className="fa-featured-picks">{list.rows.slice(0, 3).map((row, index) => <button className={`fa-featured-pick ${tierClass(row.tier)}`} key={row.championId} onClick={() => void open({ id: row.championId, name: row.name })}><NearViewport className="fa-featured-art"><ChampionArt id={row.championId} name={row.name} /></NearViewport><i className="fa-featured-rank" aria-hidden>{index + 1}</i><span className={`fa-tier ${tierClass(row.tier)}`}>{row.tier}</span><span><small>{index === 0 ? "Leading" : `#${index + 1}`} {laneLabel((row as Partial<AutoRow>).role ?? lane).toLowerCase()} pick</small><strong>{row.name}</strong><b>{fmtPct(row.winPct)} <small>win rate</small></b><small className="fa-featured-meta">{fmtPct(row.pickPct)} pick · {fmtPct(row.banPct)} ban · {fmtCount(row.games)} games</small></span></button>)}</div>}
       {list?.stale && <CachedBadge stale updatedAt={list.updatedAt} />}
       {list?.unavailable ? <Notice tone="warn">Tier list unavailable. Try another role or rank.</Notice> : !list ? <TableSkeleton /> : <div className="tier-table-wrap">
-        <table className="tier-table">
-          <thead><tr>{columns.map(([key, label]) => <th key={label} aria-sort={key && key === sort ? (key === "rank" ? "ascending" : "descending") : undefined}>
+        <table className="tier-table fa-solo-table">
+          <thead><tr>{columns.map(([key, label, className]) => <th key={label} className={className} aria-sort={key && key === sort ? (key === "rank" ? "ascending" : "descending") : undefined}>
             {key ? <button className={key === sort ? "is-sorted" : undefined} onClick={() => setSort(key)}>{label}</button> : label}</th>)}</tr></thead>
-          <tbody>{rows.slice(0, limit).map(({ row, rank }) => <TierLine key={row.championId} row={row} rank={rank} lane={(row as Partial<AutoRow>).role ?? lane} average={averages.get((row as Partial<AutoRow>).role ?? lane) ?? 0} peak={peak} onOpen={() => void open({ id: row.championId, name: row.name })} onIntent={() => prefetch(row.championId, (row as Partial<AutoRow>).role ?? lane)} />)}</tbody>
+          {/* Tier separators only make sense in rank order; other sorts interleave the tiers. */}
+          <tbody>{rows.slice(0, limit).map(({ row, rank }, index, shown) => <TierLine key={row.championId} row={row} rank={rank} lane={(row as Partial<AutoRow>).role ?? lane} showRole={lane === "auto"}
+            tierStart={sort === "rank" && index > 0 && shown[index - 1].row.tier !== row.tier}
+            average={averages.get((row as Partial<AutoRow>).role ?? lane) ?? 0} peak={peak} onOpen={() => void open({ id: row.championId, name: row.name })} onIntent={() => prefetch(row.championId, (row as Partial<AutoRow>).role ?? lane)} />)}</tbody>
         </table>
         {limit < rows.length && <NearEnd onNear={() => setLimit(current => current + ROW_STEP)} />}
         {!rows.length && <p className="panel-empty">No champion matches “{query}”.</p>}
@@ -319,20 +322,25 @@ export default function Champions({ matchups, focus, onSelectionChange, onOpenVo
   </div>;
 }
 
-function TierLine({ row, rank, lane, average, peak, onOpen, onIntent }: { row: TierRow; rank: number; lane: string; average: number; peak: { pick: number; ban: number }; onOpen: () => void; onIntent: () => void }) {
+/** Win-rate cell tint strength: full at 4 points above the role average, or 2 below. */
+const heat = (delta: number) => `${Math.round(Math.min(1, delta >= 0 ? delta / 4 : -delta / 2) * 26)}%`;
+
+function TierLine({ row, rank, lane, showRole, tierStart, average, peak, onOpen, onIntent }: { row: TierRow; rank: number; lane: string; showRole: boolean; tierStart: boolean; average: number; peak: { pick: number; ban: number }; onOpen: () => void; onIntent: () => void }) {
   const delta = row.winPct - average;
   const move = tierMove(row.tier, row.prevTier), week = weekMove(row.weekWinDelta);
   // A short dwell, so sweeping the pointer across the table does not start a download per row.
   const dwell = useRef<number>(0);
-  return <tr className={tierClass(row.tier)} onClick={onOpen} onPointerEnter={() => { dwell.current = window.setTimeout(onIntent, 120); }} onPointerLeave={() => window.clearTimeout(dwell.current)} onFocus={onIntent}>
-    <td className="col-rank">{rank}</td>
-    <td><button className="tier-champ" onClick={event => { event.stopPropagation(); onOpen(); }}><NearViewport className="fa-tier-portrait"><ChampionIcon id={row.championId} name={row.name} mode="desktop" /></NearViewport><strong>{row.name}</strong></button></td>
-    <td className="col-role"><RoleIcon role={lane} size={18} mode="desktop" /></td>
+  return <tr className={`${tierClass(row.tier)}${tierStart ? " is-tier-start" : ""}`} onClick={onOpen} onPointerEnter={() => { dwell.current = window.setTimeout(onIntent, 120); }} onPointerLeave={() => window.clearTimeout(dwell.current)} onFocus={onIntent}>
+    <td className={`col-rank${rank <= 3 ? ` is-top-${rank}` : ""}`}>{tierStart && <span className="fa-tier-rule">{row.tier} tier</span>}{rank}</td>
+    <td className="col-champ"><button className="tier-champ" onClick={event => { event.stopPropagation(); onOpen(); }}><NearViewport className="fa-tier-portrait"><ChampionIcon id={row.championId} name={row.name} mode="desktop" /></NearViewport><strong>{row.name}</strong>{showRole && <span className="fa-role-chip"><RoleIcon role={lane} size={14} mode="desktop" />{laneLabel(lane)}</span>}</button></td>
     <td className="col-tier"><span className={`fa-tier ${tierClass(row.tier)}`}>{row.tier}</span>{move && <GlowOnce className={`fa-tier-move ${move.up ? "up" : "down"}`}><Tooltip label={move.label}><span aria-label={move.label}><i aria-hidden>{move.up ? "▲" : "▼"}</i> {move.was}</span></Tooltip></GlowOnce>}</td>
-    <td className="col-wr"><strong>{fmtPct(row.winPct)}</strong>{week && <Tooltip label={week.label}><i className={`fa-week-move ${week.up ? "up" : "down"}`} aria-label={week.label}>{week.up ? <TrendingUp size={14} aria-hidden /> : <TrendingDown size={14} aria-hidden />}</i></Tooltip>}<Tooltip label="Compared with this role’s average"><small className={delta >= 0 ? "up" : "down"}>{delta >= 0 ? "+" : "−"}{Math.abs(delta).toFixed(1)}</small></Tooltip></td>
+    <td className={`col-wr${delta < 0 ? " is-below" : ""}`} style={{ "--heat": heat(delta) } as CSSProperties}><div>
+      <strong>{fmtPct(row.winPct)}{week && <Tooltip label={week.label}><i className={`fa-week-move ${week.up ? "up" : "down"}`} aria-label={week.label}>{week.up ? <TrendingUp size={14} aria-hidden /> : <TrendingDown size={14} aria-hidden />}</i></Tooltip>}</strong>
+      <Tooltip label="Compared with this role’s average"><small className={delta >= 0 ? "up" : "down"}>{delta >= 0 ? "+" : "−"}{Math.abs(delta).toFixed(1)}</small></Tooltip>
+    </div></td>
     <td className="col-num"><RateBar value={row.pickPct} peak={peak.pick} /></td>
     <td className="col-num ban"><RateBar value={row.banPct} peak={peak.ban} /></td>
-    <td className="col-num muted">{fmtCount(row.games)}</td>
+    <td className="col-num col-games">{fmtCount(row.games)}</td>
   </tr>;
 }
 

@@ -188,7 +188,7 @@ pub(crate) fn start_switch(
     // Acquire guard lease first
     let lease = state.switch_guard.acquire()?;
 
-    let (name, use_deceive, expected_puuid, watch_epoch) = {
+    let (name, use_deceive, expected_puuid, watch_epoch, launch_target) = {
         let config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         let target = config
             .accounts
@@ -200,6 +200,7 @@ pub(crate) fn start_switch(
             config.use_deceive,
             target.puuid.clone(),
             state.switch_guard.epoch(),
+            config.launch_target_for(id),
         )
     };
 
@@ -239,7 +240,7 @@ pub(crate) fn start_switch(
             riot::switch_account(&mut config, id, &bundled_deceive, &detection, announce).map_err(
                 |failure| {
                     let friendly =
-                        notify::human_reason(failure.kind, &name_for_switch, use_deceive)
+                        notify::human_reason(&failure, &name_for_switch, use_deceive)
                             .unwrap_or_else(|| failure.detail.clone());
                     (failure, friendly)
                 },
@@ -273,9 +274,9 @@ pub(crate) fn start_switch(
                     let launch_app = app.clone();
                     tauri::async_runtime::spawn(async move {
                         let cancelled = || epoch.load(Ordering::SeqCst) != watch_epoch;
-                        if let Err(error) = crate::riot_client::launch_league_when_signed_in(&cancelled).await {
+                        if let Err(error) = crate::riot_client::launch_when_signed_in(launch_target, &cancelled).await {
                             if !cancelled() {
-                                eprintln!("League launch failed: {error}");
+                                eprintln!("Launch after switch failed: {error}");
                                 notify::restart_skipped(&launch_app, &error);
                                 let _ = launch_app.emit("launch_failed", LaunchFailedPayload { id, error });
                             }

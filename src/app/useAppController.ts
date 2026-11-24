@@ -9,7 +9,7 @@ import type { RunesView, ProBuildsView, PresetBuildView, KeystoneBuildView, Matc
 import { isGamePhase, shopNoticeFrom } from "../runes/types";
 import type { SettingsTab } from "../settings/SettingsView";
 import { useSettingsVersion } from "../settingsEvents";
-import type { AppState, RemoteStatus, DetectOutcome, DetectState, DetectedIdentity, ChampSelectStatus, View, FullAppBridge } from "./types";
+import type { AppState, RemoteStatus, DetectOutcome, DetectState, DetectedIdentity, ChampSelectStatus, View, FullAppBridge, LaunchTarget } from "./types";
 import type { DeceivePrompt } from "../settings/DeceiveRestartNotice";
 import { riotIdOf } from "./IdentityCard";
 
@@ -53,6 +53,8 @@ export function useAppController(fullApp?: FullAppBridge) {
   // going through the repair flow.
   const [repairableId, setRepairableId] = useState<string | null>(null);
   const [launchFailed, setLaunchFailed] = useState(false);
+  // League came up after a failed launch: the "didn't start" banner is stale.
+  useEffect(() => { if (clientHealth === "ok" && launchFailed) { setLaunchFailed(false); setError(null); } }, [clientHealth]);
   // A switch waiting for "Switch anyway" because champion select is live.
   const [switchAsk, setSwitchAsk] = useState<string | null>(null);
   const [repairingId, setRepairingId] = useState<string | null>(null);
@@ -511,6 +513,8 @@ export function useAppController(fullApp?: FullAppBridge) {
     action("notifications", () => invoke<AppState>("set_notifications_enabled", { enabled }));
   const setReadyCheckNotifications = (enabled: boolean) =>
     action("ready-check-notifications", () => invoke<AppState>("set_ready_check_notifications", { enabled }));
+  const setLaunchTarget = (id: string | null, target: LaunchTarget | null) =>
+    action("launch-target", () => invoke<AppState>("set_launch_target", { id, target }));
   const setKoreanFontSetting = (enabled: boolean) =>
     action("korean-font", () => invoke<AppState>("set_korean_font", { enabled }));
   const setCustomModsSetting = (enabled: boolean, riskAck: boolean) =>
@@ -827,7 +831,7 @@ export function useAppController(fullApp?: FullAppBridge) {
     runes, runesLoading, runesBusy, runesError, shopNotice, runeSession, native, sync, showError, reorderAccounts,
     loadRunes, importItemBuild, applyRunes, pickSpell, allowLanFirewall, setImportItemsWithRunes,
     setApplySpellsWithRunes, loadProBuilds, loadKeystoneBuild, loadMatchup, championApi, setAutoApply,
-    setRuneTier, setNotifications, setReadyCheckNotifications, setKoreanFontSetting, setCustomModsSetting, installLtkManager,
+    setRuneTier, setNotifications, setReadyCheckNotifications, setLaunchTarget, setKoreanFontSetting, setCustomModsSetting, installLtkManager,
     setRemote, showRemoteQr, dismissReconnect, setStartOnStartupSetting, action, navigate, isBusy,
     openAccountMenu, menuAccount, switchToAccount, startRepair, visibleDetectedPrompt, displayedActiveId,
     pageTitle, footerText, footerLoggedIn, conflictingSavedAccount, saveDetected, manualPath,

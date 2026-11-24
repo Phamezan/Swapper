@@ -179,16 +179,30 @@ export function ladderScore(rank: Pick<LpPoint, "tier" | "division" | "lp">) {
   return (tier < 0 ? LADDER.length * 400 : tier * 400 + division * 100) + rank.lp;
 }
 
-export type Progress = { lp: number; next: string | null; toNext: number | null };
-/** LP bar to the next division. Apex tiers have no division to climb to.
- *  shortcut: Diamond I reads "Master" with a 100 LP bar, the real cut-off moves daily. */
+/** `nextTier`/`nextDivision`: the rank `next` names, for its crest ("" division for Master). */
+export type Progress = { lp: number; next: string | null; toNext: number | null; nextTier: string | null; nextDivision: string | null };
+/** LP to the next division. Apex tiers have no division to climb to.
+ *  shortcut: Diamond I reads "Master" at 100 LP, the real cut-off moves daily. */
 export function rankProgress(rank: NonNullable<Snapshot["rank"]>): Progress {
   const tier = LADDER.indexOf(rank.tier);
-  if (tier < 0) return { lp: rank.lp, next: null, toNext: null };
+  if (tier < 0) return { lp: rank.lp, next: null, toNext: null, nextTier: null, nextDivision: null };
   const division = DIVISIONS.indexOf(rank.division);
-  const next = division < 3 ? `${title(rank.tier)} ${DIVISIONS[division + 1]}`
-    : tier < LADDER.length - 1 ? `${title(LADDER[tier + 1])} IV` : "Master";
-  return { lp: rank.lp, next, toNext: Math.max(0, 100 - rank.lp) };
+  const [nextTier, nextDivision] = division < 3 ? [rank.tier, DIVISIONS[division + 1]]
+    : tier < LADDER.length - 1 ? [LADDER[tier + 1], "IV"] : ["MASTER", ""];
+  return { lp: rank.lp, next: `${title(nextTier)} ${nextDivision}`.trim(), toNext: Math.max(0, 100 - rank.lp), nextTier, nextDivision };
+}
+
+/** The rank gauge: a 270° arc open at the bottom in a 200×200 viewBox, run from 0 (bottom left) to 1 (bottom right). */
+export const GAUGE = { c: 100, r: 86 };
+const to2 = (n: number) => Math.round(n * 100) / 100;
+export function gaugePoint(fraction: number) {
+  const angle = 2 * Math.PI * (.75 * Math.min(1, Math.max(0, fraction)) - .375);
+  return { x: to2(GAUGE.c + GAUGE.r * Math.sin(angle)), y: to2(GAUGE.c - GAUGE.r * Math.cos(angle)) };
+}
+/** SVG path along the gauge between two fractions, clockwise. */
+export function gaugeArc(from: number, to: number) {
+  const a = gaugePoint(from), b = gaugePoint(to);
+  return `M${a.x} ${a.y}A${GAUGE.r} ${GAUGE.r} 0 ${.75 * (to - from) > .5 ? 1 : 0} 1 ${b.x} ${b.y}`;
 }
 
 const DAY = 864e5;
@@ -244,7 +258,17 @@ export function lpGraph(history: LpPoint[] | undefined, now: number, width: numb
   const sorted = (history ?? []).filter(p => onLadder(p.tier) && Number.isFinite(p.at) && Number.isFinite(p.lp) && p.lp >= 0 && p.at <= now)
     .sort((a, b) => a.at - b.at);
   const all = sorted.filter((p, i) => p.at !== sorted[i + 1]?.at);
-  const recent = all.filter(p => p.at >= now - GRAPH_DAYS * DAY);
+  const ranged = all.filter(p => p.at >= now - GRAPH_DAYS * DAY);
+  // Seeded points have no game counts, so no count spans them.
+  const counts = ranged.map((p, i) => i && !p.source && !ranged[i - 1].source ? Math.max(0, p.wins + p.losses - ranged[i - 1].wins - ranged[i - 1].losses) : 0);
+  // Across several days, one point per day (its last LP, the day's games summed) so a day's games don't zigzag the line.
+  const day = (at: number) => new Date(at).toDateString();
+  const daily = ranged.length > 0 && day(ranged[0].at) !== day(ranged[ranged.length - 1].at);
+  const recent: LpPoint[] = [], games: number[] = [];
+  ranged.forEach((p, i) => {
+    if (daily && recent.length && day(recent[recent.length - 1].at) === day(p.at)) { recent[recent.length - 1] = p; games[games.length - 1] += counts[i]; }
+    else { recent.push(p); games.push(counts[i]); }
+  });
   if (recent.length < 2) return null;
   const scores = recent.map(ladderScore);
   // Frame the recorded range with division lines and room around promotions.
@@ -254,9 +278,7 @@ export function lpGraph(history: LpPoint[] | undefined, now: number, width: numb
   const [start, end] = [recent[0].at, recent[recent.length - 1].at];
   const y = (score: number) => height - (score - low) / (high - low) * height;
   const points = recent.map((p, i) => ({
-    x: (p.at - start) / (end - start || 1) * width, y: y(scores[i]), point: p,
-    // Seeded points have no game counts, so no count spans them.
-    games: i && !p.source && !recent[i - 1].source ? Math.max(0, p.wins + p.losses - recent[i - 1].wins - recent[i - 1].losses) : 0,
+    x: (p.at - start) / (end - start || 1) * width, y: y(scores[i]), point: p, games: games[i],
   }));
   const latest = scores[scores.length - 1];
   // The last point before the window is the fairest baseline; else the window's first point.
@@ -286,7 +308,7 @@ export function lpGraph(history: LpPoint[] | undefined, now: number, width: numb
       tier: score === APEX_SCORE || (!apex && score % 400 === 0) ? tierAt(score) : null,
     });
   }
-  const peak = recent.reduce((best, p) => ladderScore(p) > ladderScore(best) ? p : best);
+  const peak = ranged.reduce((best, p) => ladderScore(p) > ladderScore(best) ? p : best);
   return { points, path: smoothPath(points), tiers: tiers.reverse(), month: gain(GRAPH_DAYS), week: gain(7), peak, guides };
 }
 

@@ -451,6 +451,7 @@ mod tests {
             profile_icon_id: None,
             nickname: None,
             vault_id: Uuid::new_v4(),
+            launch_target: None,
         }
     }
 

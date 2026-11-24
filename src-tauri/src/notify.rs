@@ -27,7 +27,7 @@ pub fn switch_succeeded(app: &AppHandle, account: &str, use_deceive: bool) {
 }
 
 pub fn switch_failed(app: &AppHandle, account: &str, use_deceive: bool, failure: &SwitchFailure) {
-    let body = human_reason(failure.kind, account, use_deceive)
+    let body = human_reason(failure, account, use_deceive)
         .unwrap_or_else(|| format!("Couldn't switch to {account}. Try again."));
     let _ = app
         .notification()
@@ -85,9 +85,10 @@ pub fn lan_reconnect_needed(app: &AppHandle) {
         .show();
 }
 
-pub(crate) fn human_reason(kind: SwitchFailureKind, account: &str, use_deceive: bool) -> Option<String> {
-    let text = match kind {
-        SwitchFailureKind::GameRunning => "Close your game first, then switch accounts.".to_string(),
+pub(crate) fn human_reason(failure: &SwitchFailure, account: &str, use_deceive: bool) -> Option<String> {
+    let text = match failure.kind {
+        // The process check wrote this one already, naming the game when it could.
+        SwitchFailureKind::GameRunning => failure.detail.clone(),
         SwitchFailureKind::ClientBusy => "Riot Client is still open. Close it fully, then try again.".to_string(),
         SwitchFailureKind::InspectionFailed => "Couldn't check for running games. Nothing changed \u{2014} try again.".to_string(),
         SwitchFailureKind::AccountMissing => "That account was removed. Add it again to switch.".to_string(),
@@ -105,10 +106,20 @@ pub(crate) fn human_reason(kind: SwitchFailureKind, account: &str, use_deceive: 
 mod tests {
     use super::*;
 
+    fn failure(kind: SwitchFailureKind) -> SwitchFailure {
+        SwitchFailure { kind, detail: "Close your game first, then switch accounts.".into() }
+    }
+
+    #[test]
+    fn game_running_names_the_game_the_check_saw() {
+        let valorant = SwitchFailure { kind: SwitchFailureKind::GameRunning, detail: "VALORANT is running. Close it first.".into() };
+        assert_eq!(human_reason(&valorant, "Example#EUW", false).as_deref(), Some("VALORANT is running. Close it first."));
+    }
+
     #[test]
     fn restore_failures_explain_the_saved_session() {
         assert_eq!(
-            human_reason(SwitchFailureKind::SessionRestore, "Example#EUW", false),
+            human_reason(&failure(SwitchFailureKind::SessionRestore), "Example#EUW", false),
             Some("Couldn't restore Example#EUW's sign-in. Try Repair account.".to_string())
         );
     }
@@ -116,11 +127,11 @@ mod tests {
     #[test]
     fn launch_failures_name_the_launcher() {
         assert_eq!(
-            human_reason(SwitchFailureKind::Launch, "Example#EUW", false),
+            human_reason(&failure(SwitchFailureKind::Launch), "Example#EUW", false),
             Some("Riot Client didn't start. Try switching again.".to_string())
         );
         assert_eq!(
-            human_reason(SwitchFailureKind::Launch, "Example#EUW", true),
+            human_reason(&failure(SwitchFailureKind::Launch), "Example#EUW", true),
             Some("Deceive didn't start. Try switching again.".to_string())
         );
     }
@@ -128,7 +139,7 @@ mod tests {
     #[test]
     fn inspection_failures_do_not_blame_a_game() {
         assert_eq!(
-            human_reason(SwitchFailureKind::InspectionFailed, "Example#EUW", false),
+            human_reason(&failure(SwitchFailureKind::InspectionFailed), "Example#EUW", false),
             Some(
                 "Couldn't check for running games. Nothing changed \u{2014} try again."
                     .to_string()
@@ -139,13 +150,13 @@ mod tests {
     #[test]
     fn friendly_categories_are_explicit_and_raw_errors_stay_hidden() {
         assert_eq!(
-            human_reason(SwitchFailureKind::GameRunning, "Example#EUW", false),
+            human_reason(&failure(SwitchFailureKind::GameRunning), "Example#EUW", false),
             Some("Close your game first, then switch accounts.".to_string())
         );
         assert_eq!(
-            human_reason(SwitchFailureKind::LauncherMissing, "Example#EUW", true),
+            human_reason(&failure(SwitchFailureKind::LauncherMissing), "Example#EUW", true),
             Some("Deceive is missing. Reinstall Swapper.".to_string())
         );
-        assert_eq!(human_reason(SwitchFailureKind::Other, "Example#EUW", false), None);
+        assert_eq!(human_reason(&failure(SwitchFailureKind::Other), "Example#EUW", false), None);
     }
 }

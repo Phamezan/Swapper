@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { useRef } from "react";
 import type { AppState } from "../App";
+import type { LaunchTarget } from "../app/types";
 import { GeneralSettings } from "../settings/GeneralSettings";
 import { FullRuneSettings as RuneSettings } from "./FullRuneSettings";
 import { OverlayCards as OverlaySettings } from "./OverlayCards";
@@ -36,6 +37,7 @@ type Props = {
   onSetHotkey: (value: string | null) => Promise<void>;
   onNotificationsChange: (enabled: boolean) => void;
   onReadyCheckChange: (enabled: boolean) => void;
+  onLaunchTargetChange: (target: LaunchTarget) => void;
   koreanFont: boolean;
   customMods: boolean;
   customModsRiskAck: boolean;
@@ -137,6 +139,8 @@ export function SettingsPage(props: Props) {
           readyCheck={props.state.readyCheckNotifications}
           onNotificationsChange={props.onNotificationsChange}
           onReadyCheckChange={props.onReadyCheckChange}
+          launchTarget={props.state.launchTarget ?? "league"}
+          onLaunchTargetChange={props.onLaunchTargetChange}
           koreanFont={props.koreanFont}
           customMods={props.customMods}
           customModsRiskAck={props.customModsRiskAck}

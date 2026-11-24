@@ -32,6 +32,35 @@ pub(crate) fn save_settings(
     ))
 }
 
+/// Sets what opens after a switch: the global setting when `id` is `None`,
+/// else that account's override (`target: None` follows the global setting).
+#[tauri::command]
+pub(crate) fn set_launch_target(
+    state: State<'_, AppState>,
+    id: Option<uuid::Uuid>,
+    target: Option<vault::LaunchTarget>,
+) -> Result<AppView, String> {
+    let mut config = state.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
+    let mut next = config.clone();
+    match id {
+        None => next.launch_target = target.unwrap_or_default(),
+        Some(id) => {
+            next.accounts.iter_mut().find(|a| a.id == id)
+                .ok_or("That account was removed. Add it again to switch.")?
+                .launch_target = target;
+        }
+    }
+    vault::save(&next)?;
+    *config = next;
+    Ok(view(
+        &config,
+        &state.bundled_deceive,
+        &state.remote.status(),
+        false,
+        state.hotkey_active.load(Ordering::SeqCst),
+    ))
+}
+
 /// Sets or clears the global hotkey. `None` disables it. Validation and
 /// registration happen before the change is persisted, and the previous
 /// combination is only released once the new one registered, so a rejected

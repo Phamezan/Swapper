@@ -74,6 +74,13 @@ function game(i: number) {
     role: "top", placement: win ? 1 + i % 3 : 5 + i % 4, lpChange: i % 5 === 4 ? null : win ? 21 : -18, players, opponent: 5 };
 }
 const params = new URLSearchParams(location.search);
+// --- rankgauge: ?rank=DIAMOND-I-69, ?rank=MASTER-250 (apex) or ?rank=none (unranked) ---
+function previewRank() {
+  const value = params.get("rank");
+  if (value === "none") return null;
+  const parts = value?.split("-") ?? ["EMERALD", "II", "64"];
+  return { tier: parts[0], division: parts.length > 2 ? parts[1] : "", lp: Number(parts[parts.length - 1]), wins: 88, losses: 71 };
+}
 // --- uidash states: ?empty (no games at all), ?no-solo (only Normal games), ?stale (saved snapshot), ?slow (snapshot takes 6 s) ---
 const games = params.has("empty") ? [] : Array.from({ length: 12 }, (_, i) => game(i)).map(g => params.has("no-solo") ? { ...g, queue: "normal", lpChange: null } : g);
 // ---- locbar: deliberately oversized invented ID to exercise middle-segment truncation ----
@@ -92,7 +99,7 @@ const summary = { metrics: [], roles: ROLES.map((role, i) => ({ role, wins: i ==
   champions: [{ id: 266, wins: 5, losses: 1, kda: 4.12 }, { id: 122, wins: 1, losses: 2, kda: 2.05 }, { id: 875, wins: 0, losses: 2, kda: 1.4 }, { id: 24, wins: 1, losses: 0, kda: 5.5 }] };
 const snapshot = {
   championNames: names, summoner: { riotId: "Swapper Demo#EUW", level: 287, icon: `${DD}/${VERSION}/img/profileicon/5367.png` },
-  rank: { tier: "EMERALD", division: "II", lp: 64, wins: 88, losses: 71 }, fetchedAt: now - (params.has("stale") ? 72e5 : 120000), mmr: params.has("empty") ? null : { tier: "DIAMOND", division: "IV", lp: 42, games: 10, trend: 31 }, games, lpHistory: params.has("empty") || params.has("no-baseline") ? [] : lpHistory, // --- todaylp: ?no-baseline shows "–" for today's LP ---
+  rank: previewRank(), fetchedAt: now - (params.has("stale") ? 72e5 : 120000), mmr: params.has("empty") ? null : { tier: "DIAMOND", division: "IV", lp: 42, games: 10, trend: 31 }, games, lpHistory: params.has("empty") || params.has("no-baseline") ? [] : lpHistory, // --- todaylp: ?no-baseline shows "–" for today's LP ---
   summaries: { all: summary, solo: summary, flex: summary, normal: { ...summary, champions: [] } },
 };
 const account = (id: string, name: string, icon: number) => ({ id, name, riotId: `${name}#DEMO`, nickname: null, platform: "EUW1", region: "EUW", profileIconId: icon, iconDataUrl: `${DD}/${VERSION}/img/profileicon/${icon}.png` });
@@ -491,6 +498,9 @@ mockIPC(async (cmd, args) => {
       setTimeout(() => void emit("accounts_changed"), 0);
       return { ...state };
     }
+    case "set_launch_target":
+      state.accounts = state.accounts.map(x => x.id === a.id ? { ...x, launchTarget: a.target } : x);
+      return { ...state };
     case "switch_account": {
       const account = state.accounts.find(x => x.id === a.id);
       setTimeout(() => void emit("switch_started", { id: a.id, name: account?.name ?? "" }), 0);

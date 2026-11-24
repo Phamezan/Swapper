@@ -64,8 +64,10 @@ export function Podium({ who, connected, open, crest, disabled, pending, trouble
 }
 
 /** Account rows keep identity and rank together; Popover owns placement and dismissal. */
-export function AccountPicker({ accounts, activeId, activeRank, cards, disabled, closed, onSwitch, onRestart, onManage }: {
+export function AccountPicker({ accounts, activeId, activeRank, cards, disabled, closed, openLabel = "Open League", onSwitch, onRestart, onManage }: {
   accounts: Account[]; activeId: string | null; cards: Record<string, AccountCard>; disabled: boolean; closed?: boolean;
+  /** What the current account's action says when the client is closed, e.g. "Open VALORANT". */
+  openLabel?: string;
   activeRank: Snapshot["rank"]; onSwitch: (id: string) => void; onRestart: () => void; onManage: () => void;
 }) {
   const [query, setQuery] = useState("");
@@ -87,7 +89,7 @@ export function AccountPicker({ accounts, activeId, activeRank, cards, disabled,
           const region = account.region ?? account.platform;
           // --i staggers the entrance (capped in CSS); --tier tints stripe, crest glow and tier name, unset when unranked.
           const style = { "--i": index, "--tier": slug ? `var(--ui-tier-${slug})` : undefined } as CSSProperties;
-          const action = closed ? "Open League" : "Restart client";
+          const action = closed ? openLabel : "Restart client";
           // The current account is a card that also holds its client action.
           return <div key={account.id} className={isCurrent ? "picker-current" : "picker-other"} style={style}><button type="button" className={`picker-row${isCurrent ? " is-current" : ""}`} disabled={disabled || isCurrent} onClick={() => onSwitch(account.id)}>
             <span className="picker-avatar">

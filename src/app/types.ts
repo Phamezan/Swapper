@@ -12,7 +12,10 @@ export type Account = {
   region: string | null;
   profileIconId: number | null;
   iconDataUrl: string | null;
+  /** What opens after switching to this account; null follows Settings. */
+  launchTarget?: LaunchTarget | null;
 };
+export type LaunchTarget = "riot_client" | "league" | "valorant";
 export type DetectedIdentity = {
   puuid: string;
   gameName: string;
@@ -64,6 +67,8 @@ export type AppState = {
   activeId: string | null;
   isSwitching?: boolean;
   useDeceive: boolean;
+  /** What a switch opens unless the account overrides it. */
+  launchTarget?: LaunchTarget;
   riotExe: string | null;
   riotDetected: boolean;
   deceiveDetected: boolean;

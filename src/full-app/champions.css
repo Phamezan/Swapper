@@ -22,10 +22,9 @@
 .fa-frame .champion-tools .fa-featured-pick .fa-tier { top: 14px; left: 18px; min-width: 32px; height: 28px; font-size: 15px; }
 .fa-frame .champion-tools .fa-featured-pick > span:last-child { padding-top: 40px; }
 
-/* ---------- Tier table: denser, with a delta chip and rate bars ---------- */
+/* ---------- Tier table (solo and duo) ---------- */
 .fa-frame .champion-tools .tier-table td { padding: 6px 14px; font-size: 14px; }
 .fa-frame .champion-tools .tier-table tbody tr { cursor: pointer; transition: background-color var(--ui-fast) var(--ui-ease); }
-.fa-frame .champion-tools .tier-table tbody tr:hover { background: linear-gradient(90deg, rgb(197 227 158 / .09), rgb(255 255 255 / .035) 55%, transparent); box-shadow: inset 2px 0 var(--fa-you); }
 .fa-frame .champion-tools .tier-table .col-rank { width: 56px; }
 .fa-frame .champion-tools .tier-champ strong { font-size: 14.5px; }
 .fa-frame .champion-tools .fa-tier-portrait, .fa-frame .champion-tools .tier-champ .champion-icon { width: 36px; height: 36px; border-radius: 9px; }
@@ -35,12 +34,54 @@
 .fa-frame .champion-tools .col-wr small.up { background: rgb(95 207 180 / .12); }
 .fa-frame .champion-tools .col-wr small.down { background: rgb(239 143 137 / .12); }
 .fa-frame .champion-tools .col-num { min-width: 120px; }
-.fa-frame .champion-tools .col-num > span { display: block; font-weight: 600; }
-.fa-frame .champion-tools .col-num.ban { color: var(--text-primary); }
-.fa-rate-bar { display: block; width: 76px; height: 3px; margin-top: 5px; border-radius: 99px; background: rgb(255 255 255 / .08); overflow: hidden; }
+.fa-rate-bar { display: block; border-radius: 99px; background: rgb(255 255 255 / .08); overflow: hidden; }
 .fa-rate-bar::after { content: ""; display: block; width: var(--rate); height: 100%; border-radius: inherit; background: var(--fa-you); }
-.fa-frame .champion-tools .ban .fa-rate-bar::after { background: var(--fa-loss); }
 .fa-frame .champion-tools .tier-table-wrap .skeleton-row { height: 52px; }
+
+/* ---------- Solo tier list: heat grid ----------
+   Each row carries its tier on the left edge; in rank order a tinted rule with a small tag starts each tier.
+   The win-rate cell is tinted by its distance from the role average; pick and ban get a hairline bar under the
+   number, drawn against the list's highest rate. */
+/* Fixed layout: rank, champion and tier keep their widths, win rate takes a share and pick, ban and games split
+   the rest, so a wide window spreads its free width over the numbers instead of leaving a gap after the name. */
+.fa-frame .champion-tools .fa-solo-table { table-layout: fixed; }
+.fa-frame .champion-tools .fa-solo-table .col-champ { width: 270px; }
+.fa-frame .champion-tools .fa-solo-table .col-tier { width: 110px; }
+.fa-frame .champion-tools .fa-solo-table .col-wr { width: 20%; }
+.fa-frame .champion-tools .fa-solo-table :is(th, td).col-num { text-align: right; }
+.fa-frame .champion-tools .fa-solo-table :is(th, td).col-games { color: var(--ui-text-3); font-size: 13.5px; }
+.fa-frame .champion-tools .fa-solo-table td { height: 50px; padding-block: 0; font-variant-numeric: tabular-nums; }
+.fa-frame .champion-tools .fa-solo-table th.col-rank { padding-inline: 6px; }
+.fa-frame .champion-tools .fa-solo-table th button.is-sorted { position: relative; align-self: stretch; }
+.fa-frame .champion-tools .fa-solo-table th button.is-sorted::after { content: ""; position: absolute; left: -2px; right: -2px; bottom: -13px; height: 2px; border-radius: 2px; background: var(--ui-brand); }
+/* Rank: top three in gold, silver and bronze, as in the duo list. */
+.fa-frame .champion-tools .fa-solo-table .col-rank { color: var(--ui-text-3); }
+.fa-frame .champion-tools .fa-solo-table td.col-rank { position: relative; }
+.fa-frame .champion-tools .fa-solo-table .col-rank:is(.is-top-1, .is-top-2, .is-top-3) { font-size: 15px; font-weight: 750; }
+.fa-frame .champion-tools .fa-solo-table .col-rank.is-top-1 { color: #e8b45a; }
+.fa-frame .champion-tools .fa-solo-table .col-rank.is-top-2 { color: #a8c8f0; text-shadow: 0 0 10px rgb(168 200 240 / 0.35); }
+.fa-frame .champion-tools .fa-solo-table .col-rank.is-top-3 { color: #c98a5a; }
+.fa-frame .champion-tools .fa-solo-table tr.is-tier-start td { border-top: 1px solid color-mix(in srgb, var(--tier, transparent) 45%, transparent); }
+.fa-tier-rule { position: absolute; top: -9px; left: 8px; display: inline-flex; align-items: center; height: 17px; padding: 0 8px; border-radius: 99px; background: var(--ui-surface-2); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tier, transparent) 50%, transparent); color: var(--tier); font-size: 11px; font-weight: 750; line-height: 1; white-space: nowrap; }
+.fa-frame .champion-tools .fa-solo-table .tier-champ { width: 100%; }
+.fa-frame .champion-tools .fa-solo-table .tier-champ strong { min-width: 0; overflow: hidden; font-size: 15px; font-weight: 650; white-space: nowrap; text-overflow: ellipsis; }
+.fa-role-chip { display: inline-flex; flex: none; align-items: center; gap: 5px; height: 22px; padding: 0 8px 0 6px; border: 1px solid var(--ui-line-2); border-radius: 99px; background: rgb(255 255 255 / .05); color: var(--ui-text-2); font-size: 12px; font-weight: 600; white-space: nowrap; }
+.fa-role-chip .role-icon, .fa-role-chip img { opacity: .95; }
+.fa-frame .champion-tools .fa-solo-table td.col-wr { background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--fa-win) var(--heat, 0%), transparent)); }
+.fa-frame .champion-tools .fa-solo-table td.col-wr.is-below { background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--fa-loss) var(--heat, 0%), transparent)); }
+.fa-frame .champion-tools .fa-solo-table td.col-wr > div { display: flex; align-items: center; gap: 10px; }
+.fa-frame .champion-tools .fa-solo-table .col-wr strong { display: inline-flex; align-items: center; font-size: 15.5px; font-weight: 720; }
+.fa-frame .champion-tools .fa-solo-table .col-wr small { margin-left: 0; background: rgb(0 0 0 / .22); }
+.fa-frame .champion-tools .fa-solo-table td.col-num:not(.col-games) { position: relative; color: var(--ui-text-2); }
+.fa-frame .champion-tools .fa-solo-table td.col-num .fa-rate-bar { position: absolute; left: 14px; right: 14px; bottom: 8px; height: 2px; background: rgb(255 255 255 / .05); transform: scaleX(-1); }
+.fa-frame .champion-tools .fa-solo-table td.col-num .fa-rate-bar::after { background: color-mix(in srgb, var(--ui-brand) 65%, transparent); }
+.fa-frame .champion-tools .fa-solo-table td.ban .fa-rate-bar::after { background: color-mix(in srgb, var(--fa-loss) 70%, transparent); }
+@media (max-width: 1200px) {
+  .fa-frame .champion-tools .fa-solo-table :is(th, td) { padding-inline: 10px; }
+  .fa-frame .champion-tools .fa-solo-table .col-champ { width: 236px; }
+  .fa-frame .champion-tools .fa-solo-table .col-tier { width: 96px; }
+  .fa-frame .champion-tools .fa-solo-table td.col-num .fa-rate-bar { left: 10px; right: 10px; }
+}
 
 /* Duos: compact vertical list. Each row's identity is a split banner (bot left,
    support right, slanted seam) using wide splash art so faces survive the short
@@ -62,7 +103,7 @@
 /* Rank: quiet numeral, top three tinted (no glow). */
 .fa-frame .champion-tools .fa-duo-table .col-rank .fa-duo-rank-num { font-size: 13.5px; font-weight: 650; color: var(--ui-text-3); font-variant-numeric: tabular-nums; }
 .fa-frame .champion-tools .fa-duo-table .col-rank.is-top-1 .fa-duo-rank-num { font-size: 15px; font-weight: 750; color: #e8b45a; }
-.fa-frame .champion-tools .fa-duo-table .col-rank.is-top-2 .fa-duo-rank-num { font-size: 15px; font-weight: 750; color: #c9ced6; }
+.fa-frame .champion-tools .fa-duo-table .col-rank.is-top-2 .fa-duo-rank-num { font-size: 15px; font-weight: 750; color: #a8c8f0; text-shadow: 0 0 10px rgb(168 200 240 / 0.35); }
 .fa-frame .champion-tools .fa-duo-table .col-rank.is-top-3 .fa-duo-rank-num { font-size: 15px; font-weight: 750; color: #c98a5a; }
 
 /* Tier badge: same size as the solo list. */
@@ -277,8 +318,7 @@
 
 /* ---------- Tier list, redesigned ----------
    Leading picks become a podium: the first is wider, each carries its tier's light, a ghost rank
-   numeral and its pick, ban and game counts. Table rows carry their tier's colour on the left edge,
-   so the list reads as bands of tiers. All static paint. */
+   numeral and its pick, ban and game counts. Table rows carry their tier's colour on the left edge. All static paint. */
 .fa-frame .champion-tools :is(.fa-featured-pick, .tier-table tr).is-splus { --tier: var(--tier-splus); }
 .fa-frame .champion-tools :is(.fa-featured-pick, .tier-table tr).is-s { --tier: var(--tier-s); }
 .fa-frame .champion-tools :is(.fa-featured-pick, .tier-table tr).is-a { --tier: var(--tier-a); }
@@ -304,13 +344,9 @@
 .fa-featured-rank { position: absolute; z-index: -1; right: 14px; bottom: -22px; font-size: 150px; font-style: normal; font-weight: 800; line-height: 1; letter-spacing: -.06em; color: transparent; -webkit-text-stroke: 2px color-mix(in srgb, var(--tier, #888) 45%, rgb(255 255 255 / .55)); pointer-events: none; }
 
 .fa-frame .champion-tools .tier-table td:first-child { box-shadow: inset 3px 0 0 color-mix(in srgb, var(--tier, transparent) 75%, transparent); }
-.fa-frame .champion-tools .tier-table tbody tr { background: linear-gradient(90deg, color-mix(in srgb, var(--tier, transparent) 7%, transparent), transparent 22%); }
-.fa-frame .champion-tools .tier-table tbody tr:hover { background: linear-gradient(90deg, color-mix(in srgb, var(--tier, #c5e39e) 16%, transparent), rgb(255 255 255 / .04) 55%, transparent); box-shadow: none; }
-.fa-frame .champion-tools .tier-table .col-rank { color: var(--ui-text-3); font-variant-numeric: tabular-nums; }
-.fa-frame .champion-tools .tier-table tbody tr:nth-child(-n+3) .col-rank { color: var(--tier, var(--ui-text-1)); font-size: 16px; font-weight: 750; }
+.fa-frame .champion-tools .tier-table tbody tr:hover { background: linear-gradient(90deg, color-mix(in srgb, var(--tier, #c5e39e) 16%, transparent), rgb(255 255 255 / .04) 55%, transparent); }
 .fa-frame .champion-tools .tier-table tbody tr:hover .tier-champ strong { color: var(--ui-brand); }
 .fa-frame .champion-tools .fa-tier-portrait { box-shadow: 0 0 0 1px var(--ui-line-2); overflow: hidden; }
-.fa-frame .champion-tools .fa-rate-bar { height: 4px; }
 @media (max-width: 1100px) { .fa-frame .champion-tools .fa-featured-picks { grid-template-columns: 1fr; } }
 
 /* ---------- Tier movement: tier vs last patch, win rate vs a week ago ---------- */
@@ -323,6 +359,6 @@
 .fa-tier-move.is-glow { animation: fa-tier-move-glow 1.4s var(--ui-ease, ease-out) 1; }
 .fa-tier-move.down.is-glow { --glow: var(--fa-loss); }
 @keyframes fa-tier-move-glow { 0%, 100% { box-shadow: 0 0 0 0 transparent; } 35% { box-shadow: 0 0 10px 1px color-mix(in srgb, var(--glow, var(--fa-win)) 55%, transparent); } }
-.fa-frame .champion-tools .col-wr .fa-week-move { display: inline-flex; vertical-align: middle; margin-left: 5px; font-style: normal; }
+.fa-frame .champion-tools .col-wr .fa-week-move { display: inline-flex; vertical-align: middle; margin-left: 6px; font-style: normal; }
 .fa-week-move.up { color: var(--fa-win); } .fa-week-move.down { color: var(--fa-loss); }
 @media (prefers-reduced-motion: reduce) { .fa-tier-move.is-glow { animation: none; } }

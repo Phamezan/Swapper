@@ -35,6 +35,7 @@ import { AmbientArt, AmbientArtContext, useAmbientArt } from './AmbientArt';
 import { contextualChampion, sidebarChampion, type AmbientChampions } from './lookModel';
 import { EmptyState, Notice, Skeleton } from "./ui/States";
 import { useRestartClient } from "./restartClient";
+import { openLabel } from "../app/launchTarget";
 import { Tooltip, TooltipProvider } from "./ui/Tooltip";
 import { useUiScale } from "./uiScale";
 
@@ -200,6 +201,8 @@ function App() {
   const riotIcon = useRiotClientIcon();
   const clientClosed = useRef(false);
   clientClosed.current = clientHealth === "closed";
+  // League came up after a failed launch: the "didn't start" banner is stale.
+  useEffect(() => { if (clientHealth === "ok" && launchError) { setError(""); setLaunchError(false); } }, [clientHealth]);
   const fetching = useRef(false);
   const mounted = useRef(false);
   const queued = useRef(false);
@@ -284,6 +287,7 @@ function App() {
   }, [snapshot, ended, go]);
   const selectedMatch = matchId == null ? null : visitedMatches.current.get(page) ?? snapshot?.games.find(game => game.id === matchId) ?? (ended?.id === matchId ? ended : undefined);
   const activeAccount = accounts?.accounts.find(account => account.id === accounts.activeId);
+  const openActive = openLabel(activeAccount?.launchTarget, accounts?.launchTarget);
   // Mid-switch the sidebar shows the account being signed into; a snapshot of another account never shows.
   const shownAccount = (switching && accounts?.accounts.find(account => account.id === switching.id)) || activeAccount;
   const ownSnapshot = !switching && snapshot && (!shownAccount?.riotId || snapshot.summoner.riotId.toLowerCase() === shownAccount.riotId.toLowerCase()) ? snapshot : null;
@@ -317,14 +321,14 @@ function App() {
       } : null })} onPickLocation={target => { setFocus({ champion: null }); go(target as Location); }}
       onRefresh={() => void refresh()} refreshing={loading} champions={champions} pages={allPages}
       onPickChampion={openChampion} onPickPage={page => go(page as Location)} snapshot={snapshot}
-      onPickPlayer={riotId => go(`Player:${riotId}`)} onRestart={() => void restartClient()} closed={clientHealth === "closed"} />
+      onPickPlayer={riotId => go(`Player:${riotId}`)} onRestart={() => void restartClient()} closed={clientHealth === "closed"} openLabel={openActive} />
     <div className="dashboard-shell">
       <AmbientArt src={pageArt} />
       <aside className="sidebar dash-scope">
         <Popover.Root open={pickerOpen} onOpenChange={setPickerOpen}>
           <div className="podium-wrap"><Podium who={who} connected={connected && Boolean(ownSnapshot)} open={pickerOpen} crest={who.rank ? crestSlug(who.rank.tier) : null} disabled={Boolean(switching)} pending={Boolean(switching)}
             trouble={(clientHealth === "dead" || clientHealth === "hung") && !switching && !inGame} onRestart={() => void restartClient()} onOpenProfile={who.tag ? () => go(`Player:${who.name}#${who.tag}`) : undefined} />
-            {pickerOpen && <AccountPicker accounts={accounts?.accounts ?? []} activeId={accounts?.activeId ?? null} activeRank={rank ?? null} cards={view?.cards ?? {}} disabled={Boolean(switching)} closed={clientHealth === "closed"}
+            {pickerOpen && <AccountPicker accounts={accounts?.accounts ?? []} activeId={accounts?.activeId ?? null} activeRank={rank ?? null} cards={view?.cards ?? {}} disabled={Boolean(switching)} closed={clientHealth === "closed"} openLabel={openActive}
               onSwitch={switchTo} onRestart={() => { setPickerOpen(false); void restartClient(); }} onManage={() => { setPickerOpen(false); go("Accounts"); }} />}
           </div>
         </Popover.Root>

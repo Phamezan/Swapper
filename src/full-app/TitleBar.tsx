@@ -34,6 +34,8 @@ type Props = {
   snapshot?: Snapshot | null;
   onRestart: () => void;
   closed?: boolean;
+  /** What the action says when the client is closed, e.g. "Open VALORANT". */
+  openLabel?: string;
 };
 
 type Result = ({ kind: "champion"; champion: ChampionOption } | { kind: "page"; page: string } | { kind: 'action' } | { kind: 'player'; player: PlayerHit }) & { group: string };
@@ -97,8 +99,8 @@ export function TitleBar(props: Props) {
   </header>;
 }
 
-function Palette({ champions, pages, snapshot, onPickChampion, onPickPage, onPickPlayer, onRestart, closed, onClose }: Props & { onClose: (restoreFocus?: boolean) => void }) {
-  const restartAction = closed ? "Open League" : "Restart client";
+function Palette({ champions, pages, snapshot, onPickChampion, onPickPage, onPickPlayer, onRestart, closed, openLabel = "Open League", onClose }: Props & { onClose: (restoreFocus?: boolean) => void }) {
+  const restartAction = closed ? openLabel : "Restart client";
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
   const input = useRef<HTMLInputElement>(null);

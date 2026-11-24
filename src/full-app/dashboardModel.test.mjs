@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { strict as assert } from "node:assert";
-import { defaultQueue, deltaText, ladderScore, lpGraph, meter, newestFirst, smoothPath, playTime, rankProgress, supportVision, tiles, tierLabel, today, tone, visionGap } from "./dashboardModel.ts";
+import { defaultQueue, deltaText, gaugeArc, gaugePoint, ladderScore, lpGraph, meter, newestFirst, smoothPath, playTime, rankProgress, supportVision, tiles, tierLabel, today, tone, visionGap } from "./dashboardModel.ts";
 
 test("tiles carry the per-game series in the given order", () => {
   const games = [game({ cs: 100 }), game({ cs: 200 }), game({ cs: 300 })];
@@ -111,11 +111,22 @@ test("today's LP is a dash without a baseline, a rank or a ranked game", () => {
 });
 
 test("rank progress counts LP to the next division and skips apex tiers", () => {
-  assert.deepEqual(rankProgress({ tier: "EMERALD", division: "II", lp: 64, wins: 0, losses: 0 }), { lp: 64, next: "Emerald I", toNext: 36 });
+  assert.deepEqual(rankProgress({ tier: "EMERALD", division: "II", lp: 64, wins: 0, losses: 0 }), { lp: 64, next: "Emerald I", toNext: 36, nextTier: "EMERALD", nextDivision: "I" });
   assert.equal(rankProgress({ tier: "EMERALD", division: "I", lp: 10, wins: 0, losses: 0 }).next, "Diamond IV");
-  assert.equal(rankProgress({ tier: "DIAMOND", division: "I", lp: 10, wins: 0, losses: 0 }).next, "Master");
-  assert.deepEqual(rankProgress({ tier: "MASTER", division: "", lp: 120, wins: 0, losses: 0 }), { lp: 120, next: null, toNext: null });
+  assert.deepEqual(rankProgress({ tier: "EMERALD", division: "I", lp: 10, wins: 0, losses: 0 }).nextTier, "DIAMOND");
+  const master = rankProgress({ tier: "DIAMOND", division: "I", lp: 10, wins: 0, losses: 0 });
+  assert.deepEqual([master.next, master.nextTier, master.nextDivision], ["Master", "MASTER", ""]);
+  assert.deepEqual(rankProgress({ tier: "MASTER", division: "", lp: 120, wins: 0, losses: 0 }), { lp: 120, next: null, toNext: null, nextTier: null, nextDivision: null });
   assert.equal(ladderScore({ tier: "GOLD", division: "I", lp: 90 }), 3 * 400 + 300 + 90);
+});
+
+test("rank gauge runs 270 degrees clockwise from bottom left over the top to bottom right", () => {
+  assert.deepEqual(gaugePoint(0), { x: 39.19, y: 160.81 });
+  assert.deepEqual(gaugePoint(.5), { x: 100, y: 14 });
+  assert.deepEqual(gaugePoint(1), { x: 160.81, y: 160.81 });
+  assert.deepEqual(gaugePoint(1.4), gaugePoint(1));
+  assert.equal(gaugeArc(0, 1), "M39.19 160.81A86 86 0 1 1 160.81 160.81");
+  assert.equal(gaugeArc(0, .5), "M39.19 160.81A86 86 0 0 1 100 14");
 });
 
 test("the LP graph covers 30 days, frames the line with division guides and sums gains", () => {
@@ -156,6 +167,16 @@ test("the LP graph covers 30 days, frames the line with division guides and sums
   const flat = lpGraph([point(2, "IRON", "IV", 0), point(1, "IRON", "IV", 0)], now, 100, 50);
   assert.ok(flat.points.every(p => Number.isFinite(p.y)));
   assert.equal(flat.month, 0);
+  // Several games on one day draw one point: the day's last LP with the day's games summed.
+  const H = DAY / 24;
+  // Midday UTC, so every local timezone keeps the three games on one date.
+  const noon = (daysAgo, hour, lp, games) => ({ ...point(daysAgo, "GOLD", "I", lp, games), at: now - daysAgo * DAY - DAY / 2 + hour * H });
+  const busy = [noon(3, 0, 10, 0), noon(2, 0, 30, 1), noon(2, 1, 12, 2), noon(2, 2, 34, 3), noon(1, 0, 50, 4)];
+  const daily = lpGraph(busy, now, 100, 50);
+  assert.deepEqual(daily.points.map(p => [p.point.lp, p.games]), [[10, 0], [34, 3], [50, 1]]);
+  assert.equal(daily.peak.lp, 50);
+  // Within one day the graph keeps every game.
+  assert.equal(lpGraph(busy.slice(1, 4), now, 100, 50).points.length, 3);
 });
 
 test("the smooth LP path never overshoots a flat stretch", () => {

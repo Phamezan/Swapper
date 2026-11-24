@@ -4,12 +4,18 @@ import { invoke } from "@tauri-apps/api/core";
 import { Check, ChevronDown, ChevronUp, MoreHorizontal, ShieldCheck, Wrench } from "lucide-react";
 import { AddAccountIcon, GripIcon, RefreshIcon, ReorderIcon, SwitchIcon } from "./ui/icons";
 import type { Account } from "../App";
+import type { LaunchTarget } from "../app/types";
+import { openLabel } from "../app/launchTarget";
+import { LaunchTargetPicker } from "../settings/LaunchTargetPicker";
 import { Notice } from "./ui/States";
 import { Tooltip } from "./ui/Tooltip";
 
 export type AccountCardsProps = {
   accounts: Account[]; activeId: string | null; switchingId: string | null; repairableId: string | null; busy: boolean;
   closed?: boolean;
+  /** The global "after switching, open" setting; each card can override it. */
+  defaultLaunchTarget?: LaunchTarget;
+  onLaunchTarget?: (id: string, target: LaunchTarget | null) => void;
   onSwitch: (id: string) => void; onRestart?: () => void; onAdd: () => void; onRename: (account: Account) => void;
   onRemove: (id: string) => void; onRepair: (id: string) => void; onError: (reason: unknown) => void;
   /** Saves a new account order (optimistic; the caller rolls back on failure). */
@@ -147,6 +153,9 @@ export function AccountCards(props: AccountCardsProps) {
         </div>
         <div className="fa-account-identity">{account.iconDataUrl ? <img src={account.iconDataUrl} alt="" loading="lazy" /> : <span className="fa-account-initial">{account.name[0]?.toUpperCase()}</span>}<span><h2 title={account.name}>{account.name}</h2><p title={account.riotId ?? undefined}>{account.riotId ?? "Riot ID unavailable"}</p></span></div>
         <div className="fa-account-meta"><span>Region<strong>{account.region ?? account.platform ?? "Unknown"}</strong></span><span>Session<strong>{switching ? "Switching…" : active ? "In use" : "Saved securely"}</strong></span></div>
+        {props.onLaunchTarget && <div className="fa-account-launch"><span>Opens</span>
+          <LaunchTargetPicker label={`What opens after switching to ${account.name}`} perAccount global={props.defaultLaunchTarget} value={account.launchTarget ?? null} disabled={props.busy || editing}
+            onChange={target => props.onLaunchTarget?.(account.id, target)} /></div>}
         {/* The "Active session" badge already names the signed-in account, so its one action is the restart:
             switching to the signed-in account restarts the client with it (same as the tray flyout). */}
         {editing
@@ -154,7 +163,7 @@ export function AccountCards(props: AccountCardsProps) {
             aria-label={`Reorder ${account.name}, position ${index + 1} of ${ids.length}`} aria-keyshortcuts="ArrowUp ArrowDown Alt+ArrowUp Alt+ArrowDown"
             onKeyDown={event => { event.stopPropagation(); onKey(event, account.id, true); }}><GripIcon size={20} /> Drag to reorder</button>
           : active
-          ? <button className="fa-secondary fa-switch fa-restart" disabled={props.busy} onClick={() => (props.onRestart ?? (() => props.onSwitch(account.id)))()}>{props.closed ? "Open League" : "Restart client"}<RefreshIcon size={16} /></button>
+          ? <button className="fa-secondary fa-switch fa-restart" disabled={props.busy} onClick={() => (props.onRestart ?? (() => props.onSwitch(account.id)))()}>{props.closed ? openLabel(account.launchTarget, props.defaultLaunchTarget) : "Restart client"}<RefreshIcon size={16} /></button>
           : <button className="fa-secondary fa-switch" disabled={props.busy} onClick={() => props.onSwitch(account.id)}>{switching ? "Signing in…" : "Switch account"}<SwitchIcon size={16} /></button>}
       </article>;
     })}<button className="fa-add-account" disabled={props.busy || editing} onClick={props.onAdd}><AddAccountIcon size={22} /><span className="fa-add-copy"><strong>{props.accounts.length ? "Add another account" : "Save your first account"}</strong><span>Sign in once through Riot Client.</span></span></button></div>

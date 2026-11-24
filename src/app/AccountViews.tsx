@@ -11,6 +11,8 @@ import { LiveGameCompact } from "../full-app/LiveGameCompact";
 import { PageHeader } from "../full-app/ui/PageHeader";
 import { RiotClientIcon } from "../riotIcon";
 import { IdentityCard } from "./IdentityCard";
+import { LaunchTargetPicker } from "../settings/LaunchTargetPicker";
+import { openLabel } from "./launchTarget";
 import type { AppState, FullAppBridge } from "./types";
 import type { AppController } from "./useAppController";
 
@@ -18,7 +20,7 @@ export function AccountsView({ controller, fullApp }: { controller: AppControlle
   const {
     data, clientHealth, busy, switchingAccountId, setName, setEditing, setPendingRemove, repairableId,
     setDetectedPrompt, showError, showRemoteQr, dismissReconnect, navigate, isBusy, openAccountMenu,
-    switchToAccount, startRepair, visibleDetectedPrompt, displayedActiveId, saveDetected, reorderAccounts,
+    switchToAccount, startRepair, visibleDetectedPrompt, displayedActiveId, saveDetected, reorderAccounts, setLaunchTarget,
   } = controller;
   const AccountsSurface = fullApp?.Accounts;
   return (
@@ -47,6 +49,7 @@ export function AccountsView({ controller, fullApp }: { controller: AppControlle
               </section>
             )}
             {AccountsSurface ? <AccountsSurface accounts={data.accounts} activeId={displayedActiveId} switchingId={switchingAccountId} repairableId={repairableId} busy={isBusy} closed={clientHealth === "closed"}
+              defaultLaunchTarget={data.launchTarget} onLaunchTarget={(id, target) => void setLaunchTarget(id, target)}
               onSwitch={id => void switchToAccount(id)} onRestart={fullApp?.onRestart} onAdd={() => navigate("add")} onRepair={startRepair} onError={showError} onReorder={ids => void reorderAccounts(ids)}
               onRename={account => { navigate("edit"); setEditing(account.id); setName(account.nickname ?? ""); }}
               onRemove={id => { navigate("remove"); setPendingRemove(id); }} /> : <div className="account-list">
@@ -84,7 +87,7 @@ export function AccountsView({ controller, fullApp }: { controller: AppControlle
                         {isThisSwitching
                           ? "Switching…"
                           : isActive
-                            ? clientHealth === "closed" ? "Open League" : "Restart client"
+                            ? clientHealth === "closed" ? openLabel(account.launchTarget, data.launchTarget) : "Restart client"
                             : repairableId === account.id
                               ? "Session needs repair"
                               : "Click to switch"}
@@ -111,7 +114,7 @@ export function AccountForms({ controller }: { controller: AppController; fullAp
   const {
     data, view, busy, setError, name, setName, editing, setEditing, pendingRemove, setPendingRemove,
     repairingId, setRepairingId, addStage, setAddStage, detect, setDetectRound, sync, showError, action,
-    navigate, conflictingSavedAccount, saveDetected,
+    navigate, conflictingSavedAccount, saveDetected, setLaunchTarget,
   } = controller;
   return (
           <>
@@ -196,8 +199,13 @@ export function AccountForms({ controller }: { controller: AppController; fullAp
                 )}
                 {view === "edit" ? editing === account.id
                   ? <button className="icon-button" aria-label={`Save nickname for ${account.name}`} onClick={() => action("nickname", () => invoke<AppState>("set_nickname", { id: account.id, name }), () => setEditing(null))}><CheckIcon size={17} /></button>
-                  : <button className="icon-button" aria-label={`Set a nickname for ${account.name}`} onClick={() => { setEditing(account.id); setName(account.nickname ?? ""); }}><Pencil size={16} /></button>
+                  : <Tooltip label={`Edit account ${account.name}`}><button className="icon-button" aria-label={`Edit account ${account.name}`} onClick={() => { setEditing(account.id); setName(account.nickname ?? ""); }}><Pencil size={16} /></button></Tooltip>
                   : <button className="icon-button danger-icon" aria-label={`Remove ${account.name}`} onClick={() => setPendingRemove(account.id)}><Trash2 size={16} /></button>}
+                {view === "edit" && editing === account.id && <div className="manage-launch">
+                  <span>Opens:</span>
+                  <LaunchTargetPicker label={`What opens after switching to ${account.name}`} perAccount global={data.launchTarget} value={account.launchTarget ?? null} disabled={busy !== null}
+                    onChange={(target) => void setLaunchTarget(account.id, target)} />
+                </div>}
                 {pendingRemove === account.id && view === "remove" && <div className="remove-confirm"><span>Remove this saved session?</span><Button size="sm" variant="destructive" disabled={busy !== null} onClick={() => action("remove", () => invoke<AppState>("remove_account", { id: account.id }), () => setPendingRemove(null))}>Remove</Button><Button size="sm" variant="ghost" onClick={() => setPendingRemove(null)}>Cancel</Button></div>}
               </div>)}
             </div>}
@@ -219,7 +227,7 @@ accountMenu && menuAccount && view === "accounts" && <div
         style={{ left: accountMenu.x, top: accountMenu.y }}
       >
         <button role="menuitem" autoFocus onClick={() => { setAccountMenu(null); void switchToAccount(menuAccount.id); }}>Switch to account</button>
-        <button role="menuitem" onClick={() => { navigate("edit"); setEditing(menuAccount.id); setName(menuAccount.nickname ?? ""); }}>Edit nickname</button>
+        <button role="menuitem" onClick={() => { navigate("edit"); setEditing(menuAccount.id); setName(menuAccount.nickname ?? ""); }}>Edit account</button>
         <button role="menuitem" className="is-danger" onClick={() => { navigate("remove"); setPendingRemove(menuAccount.id); }}>Remove account</button>
         <span className="account-menu-divider" />
         <button role="menuitem" onClick={() => navigate("add")}>Add account</button>

@@ -136,33 +136,12 @@ body { background: var(--ui-surface-0); }
 /* Keep the summary together so the plot's height cannot pull the LP bar away. */
 .fa-frame[data-look] .dashboard-shell .rank-card[data-tier] { container-type: inline-size; position: relative; isolation: isolate; overflow: hidden; }
 .fa-frame[data-look] .dashboard-shell .rank-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px 28px; align-items: center; }
-.fa-frame[data-look] .dashboard-shell .rank-summary { position: relative; isolation: isolate; min-width: 0; display: grid; grid-template-areas: "head record" "progress progress"; grid-template-columns: minmax(0, 1.5fr) minmax(100px, 1fr); gap: 20px 24px; align-items: center; }
-/* Zoom past the 16:9 PNG's transparent margins, then fade the art beneath the copy. */
-.fa-frame[data-look] .dashboard-shell .rank-emblem { position: absolute; z-index: -1; inset: -65px -35px -45px -45px; background: center / 1250px auto no-repeat; opacity: .42; pointer-events: none; mask-image: linear-gradient(90deg, transparent, #000 70%), linear-gradient(0deg, transparent, #000 25%, #000 75%, transparent); mask-composite: intersect; }
 @container (min-width: 560px) {
   .fa-frame[data-look] .dashboard-shell .rank-layout:has(.lp-graph) { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
-  .fa-frame[data-look] .dashboard-shell .rank-layout:has(.lp-graph) .rank-summary { grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "record" "progress"; gap: 18px; }
 }
 @container (min-width: 850px) {
   .fa-frame[data-look] .dashboard-shell .rank-layout:has(.lp-graph) { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
-  .fa-frame[data-look] .dashboard-shell .rank-layout:has(.lp-graph) .rank-summary { grid-template-columns: minmax(0, 1.35fr) minmax(120px, 1fr); grid-template-areas: "head record" "progress progress"; gap: 24px; }
-  .fa-frame[data-look] .dashboard-shell .rank-emblem { background-position: 65% center; background-size: 1500px auto; }
 }
-.fa-frame[data-look] .dashboard-shell .rank-card .card-head { grid-area: head; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 5px 12px; align-items: center; align-content: center; }
-.fa-frame[data-look] .dashboard-shell .rank-card .card-head > :is(.rank-crest, .rank-crest-fallback) { grid-area: 1 / 2 / span 3; }
-.fa-frame[data-look] .dashboard-shell .rank-card .card-head h2 { grid-area: 2 / 1; font-size: 28px; line-height: 1.1; text-wrap: balance; }
-.fa-frame[data-look] .dashboard-shell .rank-card .rank-lp { grid-area: 3 / 1; font-size: 24px; font-weight: 750; line-height: 1.1; color: var(--ui-brand); }
-.fa-frame[data-look] .dashboard-shell .rank-card .rank-lp small { margin-left: 3px; font-size: 13px; font-weight: 700; color: inherit; }
-.fa-frame[data-look] .dashboard-shell .rank-card .card-head > small { grid-area: 1 / 1; margin: 0; font-size: 13px; color: var(--ui-text-2); }
-.fa-frame[data-look] .dashboard-shell .rank-record { grid-area: record; align-self: center; display: grid; gap: 8px; }
-.fa-frame[data-look] .dashboard-shell .rank-record > strong { font-size: 32px; font-weight: 800; letter-spacing: -.03em; line-height: 1; }
-.fa-frame[data-look] .dashboard-shell .rank-record > strong small { margin-left: 6px; font-size: 14px; font-weight: 650; letter-spacing: 0; color: inherit; opacity: .8; }
-.fa-frame[data-look] .dashboard-shell .rank-record > span { display: flex; justify-content: space-between; font-size: 13px; font-weight: 650; }
-.fa-frame[data-look] .dashboard-shell .rank-record-bar { height: 6px; overflow: hidden; border-radius: 8px; background: color-mix(in srgb, var(--ui-loss) 60%, transparent); }
-.fa-frame[data-look] .dashboard-shell .rank-record-bar i { display: block; height: 100%; border-radius: inherit; background: var(--ui-win); }
-.fa-frame[data-look] .dashboard-shell .rank-progress { grid-area: progress; }
-.fa-frame[data-look] .dashboard-shell .rank-progress > p { flex-wrap: wrap; gap: 6px 18px; margin-top: 7px; font-size: 13px; }
-.fa-frame[data-look] .dashboard-shell .rank-card:not([data-tier]) .card-head { grid-area: auto; }
 
 /* ---------- Frame, title bar, sidebar (fixed chrome: the only blurred surfaces besides popovers) ---------- */
 .fa-frame .title-bar { z-index: 2; background: var(--ui-chrome); -webkit-backdrop-filter: var(--ui-blur); backdrop-filter: var(--ui-blur); border-bottom: 0; }
@@ -504,6 +483,10 @@ body { background: var(--ui-surface-0); }
 .fa-account-meta span { display: grid; gap: 4px; color: var(--text-muted); font-size: var(--ui-label); }
 .fa-account-meta strong { color: var(--text-primary); font-size: var(--fa-body); font-weight: 600; }
 .fa-account-card > button { width: 100%; min-height: 44px; }
+.fa-account-launch { display: grid; gap: 6px; margin: -8px 0 20px; color: var(--text-muted); font-size: var(--ui-label); }
+.fa-account-launch .segmented { display: flex; }
+.fa-account-launch .segmented button { flex: 1; min-width: 0; padding: 0 4px; white-space: nowrap; }
+.fa-account-launch .segmented.launch-picker button[data-game] { flex: 1 1 auto; gap: 4px; font-size: 12px; }
 .fa-frame .fa-add-account { grid-column: 1 / -1; min-height: 0; display: flex; align-items: center; justify-content: flex-start; gap: 16px; padding: 18px 22px; border: 1px dashed var(--fa-line-3); border-radius: var(--fa-radius); background: rgb(255 255 255 / .02); color: inherit; text-align: left; cursor: pointer; }
 .fa-frame .fa-add-account svg { flex: none; width: 42px; height: 42px; padding: 10px; border: 1px solid rgb(197 227 158 / .4); border-radius: var(--fa-radius-sm); background: var(--ui-brand-tint); color: var(--fa-you); }
 .fa-frame .fa-add-account:hover:not(:disabled) { border-color: var(--fa-you); background: var(--ui-brand-tint); }

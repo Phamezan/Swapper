@@ -193,15 +193,12 @@ button.location-segment:hover { background: var(--ui-hover); color: var(--ui-bra
 .col-rank { width: 56px; text-align: center; color: var(--text-muted); }
 :where(.dash-scope) .tier-champ { display: flex; align-items: center; gap: 12px; padding: 0; border: 0; background: none; }
 .tier-champ strong { font-weight: 600; }
-.col-role { color: var(--text-secondary); }
 .fa-tier { display: inline-grid; place-items: center; min-width: 30px; height: 26px; padding: 0 6px; border-radius: 8px; font-weight: 800; font-size: 13px; color: var(--tier, var(--text-secondary)); background: color-mix(in srgb, var(--tier, #888) 14%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tier, #888) 30%, transparent); }
 .fa-tier.is-splus { --tier: var(--tier-splus); } .fa-tier.is-s { --tier: var(--tier-s); } .fa-tier.is-a { --tier: var(--tier-a); }
 .fa-tier.is-b { --tier: var(--tier-b); } .fa-tier.is-c { --tier: var(--tier-c); } .fa-tier.is-d { --tier: var(--tier-d); }
 .col-wr strong { display: block; font-weight: 600; }
 .col-wr small { font-size: 11px; }
 .col-num { color: var(--text-secondary); }
-.col-num.ban { color: var(--stat-ban); }
-.col-num.muted { color: var(--text-muted); }
 .tier-table-wrap.is-loading { padding: 8px; display: grid; gap: 6px; }
 .skeleton-row { height: 46px; border-radius: 9px; background: linear-gradient(90deg, var(--fa-panel-2), #232328, var(--fa-panel-2)); }
 :where(.dash-scope) .champion-hero { padding: 18px 20px 22px; min-height: 168px; display: flex; flex-direction: column; justify-content: space-between; }
@@ -251,7 +248,6 @@ button.location-segment:hover { background: var(--ui-hover); color: var(--ui-bra
 .card-head small { font-size: 13px; color: var(--ui-text-3); }
 .card-head .live-button { margin-left: auto; min-height: 34px; padding: 5px 16px; }
 .rank-card .card-head small { margin-left: auto; }
-.rank-lp { font-size: 15px; font-weight: 600; color: var(--ui-text-2); }
 .today-card .card-head { flex-wrap: wrap; }
 .today-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 0; margin: 0; }
 .today-stats > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 5px; padding: 2px 16px; border-left: 1px solid var(--ui-line-1); }
@@ -265,11 +261,48 @@ button.location-segment:hover { background: var(--ui-hover); color: var(--ui-bra
 .mmr-line-rank { display: inline-flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 750; white-space: nowrap; }
 .mmr-line-rank b { font-size: 14px; font-weight: 700; color: var(--ui-text-2); }
 .mmr-line-trend { margin-left: auto; font-size: 14px; font-weight: 750; white-space: nowrap; }
-.lp-bar { height: 8px; border-radius: 99px; background: rgb(255 255 255 / .08); overflow: hidden; }
-.lp-bar i { display: block; height: 100%; border-radius: inherit; background: var(--ui-brand-gradient); }
-.rank-progress > p { display: flex; justify-content: space-between; gap: 12px; margin-top: 10px; font-size: 13px; color: var(--ui-text-2); }
-.rank-progress > p:first-child { margin-top: 0; }
 .rank-empty { font-size: 14px; color: var(--ui-text-2); }
+/* Rank card: the handoff gauge beside the tier, LP and record. Stacked while the card shares the row
+   with the LP graph at a narrow width, side by side once the card is wide (same 850px step as the graph). */
+.rank-summary { display: grid; justify-items: center; gap: 14px; min-width: 0; }
+.rank-gauge { position: relative; width: 176px; aspect-ratio: 1; flex: none; }
+.rank-gauge svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.rank-gauge path { fill: none; stroke-width: 7; stroke-linecap: round; }
+.rank-gauge-track { stroke: color-mix(in srgb, var(--rank-next-tone, var(--ui-rank-tone)) 32%, transparent); }
+.rank-gauge.is-apex .rank-gauge-track { stroke: color-mix(in srgb, var(--ui-rank-tone) 55%, transparent); }
+.rank-gauge-fill { stroke: var(--ui-brand); }
+.rank-gauge-head { fill: var(--ui-text-1); stroke: var(--ui-surface-2); stroke-width: 3; }
+.rank-gauge::before { content: ""; position: absolute; inset: 22%; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--ui-rank-tone) 20%, transparent), transparent); }
+/* The emblem PNG is 16:9 with wide transparent margins: zoom so the crest fills the box. */
+.rank-gauge-emblem { position: absolute; left: 50%; top: 45%; width: 60%; aspect-ratio: 4 / 3; transform: translate(-50%, -50%); background: center / 410% auto no-repeat; filter: drop-shadow(0 6px 16px rgb(0 0 0 / .5)); }
+.rank-gauge > :is(.rank-crest, .rank-crest-fallback) { position: absolute; left: 50%; top: 45%; transform: translate(-50%, -50%); }
+.rank-gauge-next { position: absolute; display: grid; place-items: center; width: 32px; height: 32px; transform: translate(-50%, -50%); border-radius: 50%; background: var(--ui-surface-2);
+  box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--rank-next-tone) 70%, transparent), 0 0 12px color-mix(in srgb, var(--rank-next-tone) 30%, transparent); }
+.rank-gauge-next em { position: absolute; right: -7px; bottom: -5px; min-width: 16px; height: 16px; padding: 0 3px; border-radius: 8px; font-style: normal; font-size: 11px; font-weight: 800; line-height: 16px; text-align: center; background: var(--rank-next-tone); color: var(--ui-surface-1); }
+.rank-gauge-gap { position: absolute; left: 22%; right: 22%; bottom: 0; display: grid; justify-items: center; line-height: 1.2; text-align: center; }
+.rank-gauge-gap b { font-size: 16px; font-weight: 750; color: var(--ui-brand); white-space: nowrap; }
+.rank-gauge.is-apex .rank-gauge-gap b { color: var(--ui-text-1); }
+.rank-gauge-gap span { font-size: 12px; color: var(--ui-text-2); white-space: nowrap; }
+.rank-id { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "queue queue" "name lp" "record record"; align-items: baseline; gap: 2px 12px; width: 100%; min-width: 0; }
+.rank-id > small { grid-area: queue; font-size: 13px; color: var(--ui-text-2); }
+.rank-id h2 { grid-area: name; font-size: 26px; font-weight: 750; letter-spacing: -.02em; line-height: 1.1; }
+.rank-id .rank-lp { grid-area: lp; font-size: 30px; font-weight: 800; letter-spacing: -.03em; line-height: 1; color: var(--ui-text-1); font-variant-numeric: tabular-nums; }
+.rank-id .rank-lp small { margin-left: 4px; font-size: 14px; font-weight: 700; letter-spacing: 0; color: var(--ui-text-2); }
+.rank-record { grid-area: record; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 7px 14px; align-items: center; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--ui-line-1); }
+.rank-record > strong { grid-row: span 2; font-size: 26px; font-weight: 800; letter-spacing: -.03em; line-height: 1; }
+.rank-record > strong small { margin-left: 4px; font-size: 13px; font-weight: 650; letter-spacing: 0; opacity: .8; }
+.rank-record > span { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; font-weight: 650; }
+.rank-record > span em { font-style: normal; font-weight: 500; color: var(--ui-text-3); }
+.rank-record-bar { height: 4px; overflow: hidden; border-radius: 8px; background: color-mix(in srgb, var(--ui-loss) 60%, transparent); }
+.rank-record-bar i { display: block; height: 100%; border-radius: inherit; background: var(--ui-win); }
+@container (min-width: 850px) {
+  .rank-layout:has(.lp-graph) .rank-summary { grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 28px; }
+  .rank-layout:has(.lp-graph) .rank-gauge { width: 210px; }
+  .rank-layout:has(.lp-graph) .rank-id { grid-template-columns: minmax(0, 1fr); grid-template-areas: "queue" "name" "lp" "record"; }
+  .rank-layout:has(.lp-graph) .rank-id h2 { font-size: 28px; }
+  .rank-layout:has(.lp-graph) .rank-id .rank-lp { margin-top: 8px; font-size: 48px; }
+  .rank-layout:has(.lp-graph) .rank-record { margin-top: 18px; padding-top: 16px; }
+}
 .dash-v2.is-stale :is(.dash-top, .performance, .dash-columns) { opacity: .74; filter: saturate(.55); }
 @media (max-width: 1100px) {
   .dash-top { grid-template-columns: minmax(0, 1fr); }
