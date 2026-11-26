@@ -1,0 +1,24 @@
+{
+  "note": "Read by scripts/capture-showcase.py and src/pages/index.astro. Boxes are CSS px [x, y, w, h] of the Fullsized App at a 1440x900 viewport.",
+  "app": { "width": 1440, "height": 900 },
+  "screens": {
+    "dashboard": { "dpr": 2, "widths": [1440, 2160, 2880] },
+    "draft": { "dpr": 2, "widths": [1440, 2160, 2880] },
+    "match": { "dpr": 2, "widths": [1440, 2160, 2880] },
+    "live": { "dpr": 2, "widths": [1440, 2160, 2880] },
+    "matchups": { "dpr": 2, "widths": [1440, 2160, 2880] }
+  },
+  "crops": {
+    "m-dash-gauge": { "screen": "dashboard", "box": [608.5, 135.5, 356.5, 352.5] },
+    "draft-team": { "screen": "draft", "box": [299, 63.5, 1103.5, 329] },
+    "m-draft-picks": { "screen": "draft", "box": [299, 63.5, 521, 329] },
+    "draft-build": { "screen": "draft", "box": [299, 403, 1103.5, 472] },
+    "live-blue": { "screen": "live", "box": [298, 180, 1106, 417.5] },
+    "m-live-rows": { "screen": "live", "box": [298, 180, 620, 270] },
+    "match-score": { "screen": "match", "box": [298, 108, 1106, 432] },
+    "m-match-rows": { "screen": "match", "box": [298, 108, 602, 272] },
+    "mu-guide": { "screen": "matchups", "box": [318, 279, 1064, 529] },
+    "m-mu-tips": { "screen": "matchups", "box": [718, 446, 635, 363] }
+  },
+  "tray": { "width": 400, "height": 640, "dpr": 2 }
+}

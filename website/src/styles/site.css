@@ -1,0 +1,1347 @@
+@font-face {
+  font-family: "Outfit";
+  src: url("../../../src/assets/Outfit-Variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+/* Near-black granite with grey text levels. Green (the app's brand) only inside app screens and on
+   Download buttons. Radius rule: buttons fully round, surfaces 12-16px. */
+:root {
+  --bg: #08090a;
+  --panel: #0f1011;
+  --panel-2: #151617;
+  --line-1: rgb(255 255 255 / 0.06);
+  --line-2: rgb(255 255 255 / 0.09);
+  --line-3: rgb(255 255 255 / 0.15);
+  --text-1: #f7f8f8;
+  --text-2: #8a8f98;
+  --text-3: #777c85;
+  --brand: #c5e39e;
+  --brand-hover: #d6eeb6;
+  --brand-ink: #15200d;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --focus: 0 0 0 2px var(--bg), 0 0 0 4px rgb(247 248 248 / 0.85);
+  --glow: radial-gradient(60% 100% at 50% 0%, rgb(255 255 255 / 0.06), transparent 70%);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --container: 1264px;
+  --gutter: 32px;
+  --header-h: 60px;
+  /* z-index scale: header 40, skip link 100. */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 12px);
+  color-scheme: dark;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  font-family: "Outfit", "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-1);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+figure {
+  margin: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 12px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--text-1);
+  color: var(--bg);
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  left: 16px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ---------- Header: opaque so scrolled content never shows through ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line-1);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: var(--header-h);
+}
+
+.brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-right: 28px;
+  border-radius: 8px;
+}
+
+.brand-lockup img {
+  border-radius: 6px;
+}
+
+.brand-wordmark {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.site-nav {
+  display: flex;
+  gap: 2px;
+  margin-right: auto;
+}
+
+.site-nav a {
+  padding: 6px 12px;
+  border-radius: 999px;
+  color: var(--text-2);
+  font-size: 14px;
+  transition: color 150ms ease;
+}
+
+.site-nav a:hover {
+  color: var(--text-1);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  height: 44px;
+  padding: 0 20px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.btn-download {
+  background: var(--brand);
+  color: var(--brand-ink);
+}
+
+.btn-download:hover {
+  background: var(--brand-hover);
+}
+
+.btn-tag {
+  margin-right: -6px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: rgb(21 32 13 / 0.1);
+  color: rgb(21 32 13 / 0.62);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.btn-ghost {
+  border-color: var(--line-2);
+  background: rgb(255 255 255 / 0.04);
+  color: var(--text-1);
+}
+
+.btn-ghost:hover {
+  background: rgb(255 255 255 / 0.08);
+}
+
+.btn.is-compact {
+  height: 32px;
+  padding: 0 14px;
+  font-size: 13.5px;
+  gap: 7px;
+}
+
+.btn.is-large {
+  height: 48px;
+  padding: 0 24px;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 6px;
+  color: var(--text-1);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.text-link svg {
+  color: var(--text-2);
+  transition: transform 180ms var(--ease-out), color 150ms ease;
+}
+
+.text-link:hover svg {
+  color: var(--text-1);
+  transform: translate(2px, -2px);
+}
+
+/* The live app needs a wide screen; links that would start it hide below that. */
+@media (max-width: 1179px) {
+  [data-try].needs-wide {
+    display: none;
+  }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  isolation: isolate;
+  padding-top: 104px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 820px;
+  z-index: -1;
+  background: var(--glow);
+  pointer-events: none;
+}
+
+.hero-title {
+  max-width: 15ch;
+  font-size: clamp(42px, 5.4vw, 72px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.hero-lead {
+  max-width: 50ch;
+  margin-top: 22px;
+  color: var(--text-2);
+  font-size: clamp(17px, 1.3vw, 19px);
+  line-height: 1.5;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 36px;
+}
+
+.release-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  color: var(--text-2);
+  font-size: 13.5px;
+}
+
+.release-line a {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  border-radius: 4px;
+  color: var(--text-1);
+}
+
+.release-line a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* App window: flat, 1px light border, fades into the page at the bottom. */
+.hero-stage {
+  position: relative;
+  margin-top: 52px;
+}
+
+.hero-stage::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 2;
+  height: 20%;
+  background: linear-gradient(rgb(8 9 10 / 0), var(--bg) 92%);
+  pointer-events: none;
+}
+
+.hero-window {
+  position: relative;
+  aspect-ratio: 1440 / 900;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+}
+
+.hero-still {
+  width: 100%;
+  height: auto;
+}
+
+/* 1440x900 CSS px inside; `zoom` (set by script) fits it to the window without a resampled transform. */
+.hero-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 1440px;
+  height: 900px;
+  border: 0;
+  background: var(--panel);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 500ms ease;
+}
+
+.hero.is-live .hero-frame {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ---------- Tools strip ---------- */
+.tools {
+  padding: 48px 0 24px;
+  overflow-x: clip; /* hover labels at row ends must not cause sideways scroll */
+}
+
+.mq-track {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px clamp(18px, 3vw, 44px);
+  list-style: none;
+}
+
+.mq-item {
+  position: relative;
+  display: block;
+  padding: 6px 2px 30px;
+  border-radius: 6px;
+}
+
+.mq-name {
+  color: var(--text-2);
+  font-size: clamp(15px, 1.4vw, 20px);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+  transition: color 150ms ease;
+}
+
+.mq-use {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  translate: -50% 0;
+  color: var(--text-2);
+  font-size: 12.5px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.mq-item:hover .mq-name,
+.mq-item:focus-visible .mq-name {
+  color: var(--text-1);
+}
+
+.mq-item:hover .mq-use,
+.mq-item:focus-visible .mq-use {
+  opacity: 1;
+}
+
+.tools-note {
+  margin-top: 4px;
+  color: var(--text-3);
+  font-size: 12.5px;
+  text-align: center;
+}
+
+/* Phones: no hover, so no use labels and a tighter row. */
+@media (max-width: 767px) {
+  .mq-track {
+    gap: 4px 28px;
+  }
+
+  .mq-item {
+    padding: 4px 2px;
+  }
+
+  .mq-name {
+    font-size: 17px;
+  }
+
+  .mq-use {
+    display: none;
+  }
+}
+
+/* ---------- Generic section ---------- */
+.section {
+  padding: 128px 0;
+}
+
+.section-title {
+  max-width: 20ch;
+  font-size: clamp(32px, 3.4vw, 48px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+/* ---------- Tour ---------- */
+.tour {
+  padding-top: 120px;
+}
+
+.tour-intro p {
+  max-width: 56ch;
+  margin-top: 16px;
+  color: var(--text-2);
+  font-size: 17px;
+}
+
+/* Stacked steps (default): one legible crop per step at 0.8x real size, panned sideways, never shrunk. */
+.tour-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr); /* wide crops pan inside their step instead of widening the page */
+  gap: 72px;
+  margin-top: 56px;
+  padding-bottom: 24px;
+  list-style: none;
+}
+
+.tl-step h3 {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.tl-step > p {
+  max-width: 60ch;
+  margin-top: 8px;
+  color: var(--text-2);
+}
+
+.tl-pan {
+  margin: 20px calc(-1 * var(--gutter)) 0;
+  padding: 0 var(--gutter) 24px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  border-radius: var(--radius-md);
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent);
+  mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent);
+}
+
+.tl-pan picture {
+  display: block;
+  width: max-content;
+  scroll-snap-align: start;
+}
+
+.tl-pan img {
+  width: calc(var(--w) * 0.8px);
+  max-width: none;
+  height: auto;
+  border: 1px solid var(--line-3);
+  border-radius: var(--radius-md);
+}
+
+/* Tour stage. Hidden by default; turned on below where the window fits at 0.75x or more, motion is
+   welcome and the browser has scroll timelines. Scroll only picks the step (markers + a tiny script);
+   every change between steps is a time-based transition, so it never scrubs with the wheel. */
+.tc {
+  display: none;
+}
+
+.tour-track.tc {
+  position: relative;
+  height: calc(var(--marks) * 45vh + 100vh);
+  margin-top: 24px;
+  view-timeline: --tour block;
+}
+
+/* Only the stretch the viewport centre sweeps while the stage is pinned. */
+.tc-markers {
+  position: absolute;
+  inset: calc(50dvh - var(--header-h)) 0 50dvh;
+  display: grid;
+  grid-template-rows: repeat(var(--marks), 1fr);
+  pointer-events: none;
+}
+
+.tc-stage {
+  position: sticky;
+  top: var(--header-h);
+  display: grid;
+  grid-template-columns: 260px auto;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  height: calc(100dvh - var(--header-h));
+  padding: 24px 32px;
+  overflow: hidden;
+}
+
+.tc-progress {
+  height: 2px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--line-3);
+  /* One segment per step. */
+  -webkit-mask-image: repeating-linear-gradient(90deg, #000 0 calc(100% / var(--marks) - 5px), transparent calc(100% / var(--marks) - 5px) calc(100% / var(--marks)));
+  mask-image: repeating-linear-gradient(90deg, #000 0 calc(100% / var(--marks) - 5px), transparent calc(100% / var(--marks) - 5px) calc(100% / var(--marks)));
+}
+
+.tc-progress span {
+  display: block;
+  height: 100%;
+  background: var(--text-1);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.tc-caps {
+  position: relative;
+  height: 230px;
+  margin-top: 22px;
+}
+
+/* Captions: the old one is gone (200 ms) before the new one rises in, so two are never readable. */
+.tc-cap {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 200ms ease, transform 0s 200ms;
+}
+
+.tc-cap.is-on {
+  opacity: 1;
+  transform: none;
+  transition: opacity 520ms 180ms var(--ease-out), transform 640ms 180ms var(--ease-out);
+}
+
+.tc-cap h3 {
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.tc-cap p {
+  margin-top: 12px;
+  color: var(--text-2);
+  font-size: 15.5px;
+  line-height: 1.55;
+}
+
+.tc-window {
+  position: relative;
+  /* 0.75x floor: at 1440x820 this resolves to 1084 CSS px for the 1440 px app. */
+  width: min(calc(100vw - 64px - 292px), calc((100dvh - var(--header-h) - 48px) * 1.6), 1440px);
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+}
+
+/* Screens: the incoming one fades and rises over the outgoing one, which stays put underneath until
+   it is covered, then resets. One ease-out curve, 650 ms, whatever the wheel does. */
+.tc-screen {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(18px) scale(0.985);
+  transition: opacity 0s 650ms, transform 0s 650ms;
+  /* Measured: without it, a screen's first frame rasterises its large image mid-transition (33-50 ms). */
+  will-change: opacity, transform;
+}
+
+.tc-screen.is-on {
+  z-index: 1;
+  opacity: 1;
+  transform: none;
+  transition: opacity 650ms var(--ease-out), transform 650ms var(--ease-out);
+}
+
+.tc-screen img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Spotlight on the draft screen: on the teams for "draft", slides down to the build for "build". */
+.tc-focus {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  height: var(--h);
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.3), 0 0 0 200vmax rgb(8 9 10 / 0.5);
+  pointer-events: none;
+  transition: left 650ms var(--ease-out), top 650ms var(--ease-out), width 650ms var(--ease-out), height 650ms var(--ease-out);
+}
+
+.tc-stage[data-step="build"] .tc-focus {
+  left: var(--bx);
+  top: var(--by);
+  width: var(--bw);
+  height: var(--bh);
+}
+
+.tc-screen:not(.is-on) .tc-focus {
+  transition: none;
+}
+
+.tc-dim {
+  position: absolute;
+  inset: 0;
+  background: rgb(8 9 10 / 0.72);
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+.tc-taskbar {
+  position: absolute;
+  inset: auto 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 7%;
+  padding: 0 2%;
+  border-top: 1px solid var(--line-2);
+  background: rgb(20 20 23 / 0.94);
+  transform: translateY(100%);
+  transition: transform 500ms var(--ease-out);
+}
+
+.tc-tray {
+  position: absolute;
+  right: 3%;
+  bottom: 9%;
+  height: 80%;
+  aspect-ratio: 400 / 640;
+  overflow: hidden;
+  border: 1px solid var(--line-3);
+  border-radius: 12px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 500ms ease, transform 700ms var(--ease-out);
+}
+
+/* The dashboard screen only shows for the tray step, so its tray is always out while it is on. */
+.tc-screen.is-on .tc-dim {
+  opacity: 1;
+  transition-delay: 150ms;
+}
+
+.tc-screen.is-on .tc-taskbar {
+  transform: none;
+  transition-delay: 250ms;
+}
+
+.tc-screen.is-on .tc-tray {
+  opacity: 1;
+  transform: none;
+  transition-delay: 450ms;
+}
+
+.tc-try {
+  margin-top: 8px;
+}
+
+@media (min-width: 1440px) and (min-height: 820px) and (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .tc {
+      display: block;
+    }
+
+    .tour-list {
+      display: none;
+    }
+
+    .tc-progress span {
+      animation: tc-fill linear both;
+      animation-timeline: --tour;
+      animation-range: contain 0% contain 100%;
+    }
+
+    /* Entrance: the window rises and grows into place as the stage pins. */
+    .tc-window {
+      animation: tc-enter linear both;
+      animation-timeline: --tour;
+      animation-range: entry 45% contain 0%;
+    }
+  }
+}
+
+@keyframes tc-fill {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes tc-enter {
+  from {
+    opacity: 0.35;
+    transform: translateY(64px) scale(0.93);
+  }
+}
+
+/* ---------- How it works: horizontal rail ---------- */
+.section-how .section-title {
+  max-width: 22ch;
+}
+
+.how-rail {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 48px;
+  margin-top: 64px;
+  padding: 0;
+  list-style: none;
+}
+
+.how-rail::before {
+  content: "";
+  position: absolute;
+  top: 23px;
+  left: 24px;
+  right: 24px;
+  height: 1px;
+  background: var(--line-2);
+}
+
+.how-step {
+  position: relative;
+}
+
+.how-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 28px;
+  border: 1px solid var(--line-3);
+  border-radius: 50%;
+  background: var(--panel);
+  color: var(--text-1);
+  box-shadow: 0 0 0 8px var(--bg);
+}
+
+.how-step h3 {
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+.how-step p {
+  max-width: 36ch;
+  margin-top: 10px;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+.how-step .text-link {
+  margin-top: 16px;
+}
+
+/* ---------- FAQ: sticky heading beside a hairline list ---------- */
+.section-faq {
+  border-top: 1px solid var(--line-1);
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: 64px;
+  align-items: start;
+}
+
+.faq-head {
+  position: sticky;
+  top: calc(var(--header-h) + 48px);
+}
+
+.faq-list {
+  border-top: 1px solid var(--line-2);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--line-2);
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 4px;
+  border-radius: 6px;
+  font-size: 17px;
+  font-weight: 500;
+  list-style: none;
+  cursor: pointer;
+  transition: color 150ms ease;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary svg {
+  flex: none;
+  color: var(--text-2);
+  transition: transform 250ms var(--ease-out);
+}
+
+.faq-item[open] summary svg {
+  transform: rotate(45deg);
+}
+
+.faq-item p {
+  max-width: 68ch;
+  padding: 0 4px 24px;
+  color: var(--text-2);
+  line-height: 1.65;
+}
+
+/* ---------- Changelog: the last three releases ---------- */
+.changelog {
+  border-top: 1px solid var(--line-1);
+}
+
+.cl-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cl-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+  margin-top: 48px;
+  padding: 0;
+  list-style: none;
+}
+
+.cl-item {
+  padding-top: 20px;
+  border-top: 1px solid var(--line-2);
+}
+
+.cl-item time {
+  color: var(--text-2);
+  font-size: 13.5px;
+}
+
+.cl-item h3 {
+  margin-top: 6px;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+.cl-item h3 a {
+  border-radius: 4px;
+}
+
+.cl-item h3 a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.cl-item ul {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+  padding-left: 16px;
+  color: var(--text-2);
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+.cl-item li {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+.cl-item li::marker {
+  color: var(--text-3);
+}
+
+/* ---------- Closing download panel ---------- */
+/* Closing band: the green horizon mesh (scripts/ambientBg.ts) behind the CTA; the footer stays plain so its text reads. */
+.closing-band {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.closing-wall {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.ambient-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Fade the mesh in from the page above and keep the CTA text readable. */
+.closing-wall::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 56% 36% at 50% 24%, rgb(8 9 10 / 0.55), transparent 100%),
+    linear-gradient(180deg, var(--bg) 0%, transparent 22%, transparent 78%, var(--bg) 100%);
+}
+
+.closing {
+  padding: 32px 0 96px;
+}
+
+.closing-inner {
+  display: grid;
+  justify-items: center;
+  padding: 96px 32px 72px;
+  text-align: center;
+}
+
+.closing h2 {
+  font-size: clamp(36px, 4.4vw, 60px);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+.closing-inner > p {
+  margin: 18px 0 36px;
+  color: var(--text-2);
+  font-size: 17px;
+}
+
+.closing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* SmartScreen explainer (README.md: the installer is unsigned). */
+.smartscreen {
+  display: flex;
+  gap: 14px;
+  max-width: 600px;
+  margin-top: 48px;
+  padding: 18px 20px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  text-align: left;
+}
+
+.smartscreen svg {
+  flex: none;
+  color: var(--text-2);
+}
+
+.smartscreen h3 {
+  font-size: 15.5px;
+  font-weight: 500;
+}
+
+.smartscreen p {
+  margin-top: 6px;
+  color: var(--text-2);
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+.smartscreen strong {
+  color: var(--text-1);
+  font-weight: 500;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding: 56px 0 48px;
+  border-top: 1px solid var(--line-1);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+  gap: 40px;
+}
+
+.footer-brand p {
+  max-width: 34ch;
+  margin-top: 14px;
+  color: var(--text-2);
+  font-size: 14.5px;
+}
+
+.footer-col {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: 10px;
+}
+
+.footer-col h2 {
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.footer-col a {
+  border-radius: 4px;
+  color: var(--text-2);
+  font-size: 14px;
+  transition: color 150ms ease;
+}
+
+.footer-col a:hover {
+  color: var(--text-1);
+}
+
+.legal-disclaimer {
+  grid-column: 1 / -1;
+  padding-top: 28px;
+  border-top: 1px solid var(--line-1);
+  color: var(--text-3);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Desktop: Riot's text may run wider than the column (one line from ~1630px), never wider than the window. */
+@media (min-width: 1024px) {
+  .legal-disclaimer {
+    justify-self: center;
+    width: max-content;
+    max-width: calc(100vw - 64px);
+  }
+}
+
+/* ---------- Motion (static under reduced motion) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-title,
+  .hero-lead,
+  .hero-actions,
+  .release-line,
+  .hero-stage {
+    animation: rise 900ms var(--ease-out) both;
+  }
+
+  .hero-lead {
+    animation-delay: 80ms;
+  }
+
+  .hero-actions,
+  .release-line {
+    animation-delay: 150ms;
+  }
+
+  .hero-stage {
+    animation-delay: 260ms;
+  }
+
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+  }
+
+  .js .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  .how-step:nth-child(2),
+  .cl-item:nth-child(2) {
+    transition-delay: 80ms;
+  }
+
+  .how-step:nth-child(3),
+  .cl-item:nth-child(3) {
+    transition-delay: 160ms;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn,
+  .faq-item summary svg,
+  .text-link svg,
+  .hero-frame {
+    transition: none;
+  }
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1179px) {
+  /* The still keeps at least 1080 of its 1440 CSS px; the window crops the rest. */
+  .hero-window {
+    aspect-ratio: auto;
+    height: clamp(380px, 52vw, 560px);
+  }
+
+  .hero-still {
+    width: max(100%, 1080px);
+    max-width: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .cl-list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .faq-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .faq-head {
+    position: static;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 860px) {
+  /* Phones get the rank card at its real size instead of a shrunk window. */
+  .hero-stage {
+    margin-top: 48px;
+  }
+
+  .hero-stage::after {
+    display: none;
+  }
+
+  .hero-window {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    overflow: visible;
+    border: 0;
+    background: none;
+  }
+
+  .hero-still {
+    width: min(100%, 357px);
+    border: 1px solid var(--line-3);
+    border-radius: var(--radius-lg);
+  }
+
+  .tl-pan img {
+    width: calc(var(--wm, var(--w)) * 0.8px);
+  }
+
+}
+
+@media (max-width: 767px) {
+  :root {
+    --gutter: 16px;
+    --header-h: 56px;
+  }
+
+  .header-inner {
+    justify-content: space-between;
+  }
+
+  .site-nav {
+    display: none;
+  }
+
+  .hero {
+    padding-top: 64px;
+  }
+
+  .hero-actions .btn {
+    flex: 1 1 100%;
+  }
+
+  .section {
+    padding: 88px 0;
+  }
+
+  .tour {
+    padding-top: 80px;
+  }
+
+  .tour-list {
+    gap: 56px;
+    margin-top: 40px;
+  }
+
+  .tl-step h3 {
+    font-size: 20px;
+  }
+
+  .how-rail {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+    margin-top: 48px;
+  }
+
+  .how-rail::before {
+    top: 24px;
+    bottom: 24px;
+    left: 23px;
+    right: auto;
+    width: 1px;
+    height: auto;
+  }
+
+  .how-step {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    column-gap: 20px;
+  }
+
+  .how-icon {
+    grid-row: span 2;
+    margin-bottom: 0;
+  }
+
+  .how-step h3 {
+    align-self: center;
+    font-size: 18px;
+  }
+
+  .how-step p {
+    grid-column: 2;
+    margin-top: 6px;
+  }
+
+  .faq-item summary {
+    padding: 18px 2px;
+    font-size: 16px;
+  }
+
+  .faq-item p {
+    padding: 0 2px 20px;
+  }
+
+  .closing {
+    padding: 16px 0 64px;
+  }
+
+  .closing-inner {
+    padding: 64px 20px 24px;
+  }
+
+  .closing-actions,
+  .closing-actions .btn {
+    width: 100%;
+  }
+
+  .smartscreen {
+    margin-top: 36px;
+  }
+
+  .site-footer {
+    padding: 40px 0 32px;
+  }
+
+  .footer-grid {
+    gap: 32px;
+  }
+}

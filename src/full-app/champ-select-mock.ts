@@ -9,7 +9,7 @@ import { guideAbilities } from "./fixtures/guideAbilities";
 import blindPicks from "../../src-tauri/resources/guides/blind-picks.json";
 
 const DD = "https://ddragon.leagueoflegends.com/cdn";
-const VERSION = "16.21.1";
+const VERSION = "16.23.1";
 const CHAMPIONS: Record<number, [string, string]> = {
   238: ["Zed", "Zed"],
   266: ["Aatrox", "Aatrox"], 122: ["Darius", "Darius"], 103: ["Ahri", "Ahri"], 64: ["Lee Sin", "LeeSin"], 222: ["Jinx", "Jinx"],

@@ -1,0 +1,671 @@
+---
+import https from "node:https";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import showcase from "../../scripts/showcase.json";
+import {
+  ArrowUpRight,
+  Key,
+  Plus,
+  ShieldWarning,
+  SignIn,
+  Swap,
+  WindowsLogo,
+} from "@phosphor-icons/react";
+
+type Box = [number, number, number, number];
+type CropId = keyof typeof showcase.crops;
+type ScreenId = keyof typeof showcase.screens;
+const APP_W = showcase.app.width;
+
+const box = (id: CropId) => showcase.crops[id].box as Box;
+const screenSet = (name: ScreenId, ext: "avif" | "webp") =>
+  showcase.screens[name].widths.map((w) => `/showcase/${name}-${w}.${ext} ${w}w`).join(", ");
+const largest = (name: ScreenId) => `/showcase/${name}-${showcase.screens[name].widths.at(-1)}.webp`;
+
+// ---------- Releases: fetched once at build time, refreshed in the browser below ----------
+const RELEASES_API = "https://api.github.com/repos/Phamezan/Swapper/releases?per_page=3";
+const RELEASES_PAGE = "https://github.com/Phamezan/Swapper/releases";
+const LATEST_PAGE = `${RELEASES_PAGE}/latest`;
+type Release = { tag: string; date: string; url: string; download: string; notes: string[] };
+// Used when GitHub can't be reached at build time; the browser still asks for the latest release.
+const FALLBACK_RELEASES: Release[] = [
+  {
+    tag: "v1.0.21",
+    date: "2026-11-24T16:50:43Z",
+    url: `${RELEASES_PAGE}/tag/v1.0.21`,
+    download: `${RELEASES_PAGE}/download/v1.0.21/Swapper_1.0.21_x64-setup.exe`,
+    notes: [
+      "Choose what opens after a switch: Riot Client, League or VALORANT. Set it in Settings, or per account with the new \"Opens\" picker on each account.",
+      "\"Open ...\" buttons now name what the account opens, and a blocked switch tells you which game is running.",
+      "Dashboard: the rank card has a new gauge showing your progress toward the next rank.",
+    ],
+  },
+  {
+    tag: "v1.0.20",
+    date: "2026-11-22T17:23:03Z",
+    url: `${RELEASES_PAGE}/tag/v1.0.20`,
+    download: `${RELEASES_PAGE}/download/v1.0.20/Swapper_1.0.20_x64-setup.exe`,
+    notes: [
+      "Custom mods: browse and install RuneForge skins in the app. Mods go through LTK Manager, which Swapper now sets up and updates for you.",
+      "Counters (was Answers): rebuilt on pro games, with the pro rune page for each counter.",
+      "Comps: redesigned board, roster with your active five, and a new team bar.",
+    ],
+  },
+  {
+    tag: "v1.0.19",
+    date: "2026-11-15T22:21:55Z",
+    url: `${RELEASES_PAGE}/tag/v1.0.19`,
+    download: `${RELEASES_PAGE}/download/v1.0.19/Swapper_1.0.19_x64-setup.exe`,
+    notes: [
+      "New Comps page: pro team comps grouped by playstyle (Engage, Poke, Pick, Dive, Protect the carry), five per page.",
+      "Add your Flex or Clash teammates and see which comps your team can already play.",
+      "Each comp has its own page: the five picks with draft order, a team game plan, what beats it, and pro games you can watch in the app.",
+    ],
+  },
+];
+
+// Release notes are markdown; the page shows plain text with no em or en dashes.
+const plain = (line: string) =>
+  line
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/\*\*|__|`/g, "")
+    .replace(/\s+[\u2013\u2014]\s+/g, ", ")
+    .replace(/[\u2013\u2014]/g, "-")
+    .trim();
+
+type GhRelease = { tag_name: string; published_at: string; html_url: string; body?: string; draft: boolean; prerelease: boolean; assets: { name: string; browser_download_url: string }[] };
+const toRelease = (r: GhRelease): Release => ({
+  tag: r.tag_name,
+  date: r.published_at,
+  url: r.html_url,
+  download: r.assets.find((a) => a.name.endsWith("_x64-setup.exe"))?.browser_download_url ?? LATEST_PAGE,
+  notes: (r.body ?? "")
+    .split(/\r?\n/)
+    .filter((l) => /^\s*[-*]\s+/.test(l))
+    .slice(0, 3)
+    .map((l) => plain(l.replace(/^\s*[-*]\s+/, ""))),
+});
+
+// node:https with no pooled agent: a kept-alive fetch socket crashes Node on Windows when Astro exits.
+const getJson = (url: string) =>
+  new Promise<unknown>((resolve, reject) => {
+    const headers = { Accept: "application/vnd.github+json", "User-Agent": "swapper-website-build" };
+    const req = https.get(url, { agent: false, headers, timeout: 10000 }, (res) => {
+      if (res.statusCode !== 200) {
+        res.resume();
+        reject(new Error(`HTTP ${res.statusCode}`));
+        return;
+      }
+      let body = "";
+      res.setEncoding("utf8");
+      res.on("data", (chunk) => (body += chunk));
+      res.on("end", () => {
+        try {
+          resolve(JSON.parse(body));
+        } catch (error) {
+          reject(error);
+        }
+      });
+    });
+    req.on("timeout", () => req.destroy(new Error("timed out")));
+    req.on("error", reject);
+  });
+
+async function loadReleases(): Promise<Release[]> {
+  try {
+    const list = ((await getJson(RELEASES_API)) as GhRelease[]).filter((r) => !r.draft && !r.prerelease).map(toRelease);
+    if (!list.length) throw new Error("no releases");
+    return list.slice(0, 3);
+  } catch (error) {
+    console.warn(`[releases] GitHub unavailable, using built-in releases: ${error}`);
+    return FALLBACK_RELEASES;
+  }
+}
+const releases = await loadReleases();
+const latest = releases[0];
+const fmtDate = (iso: string) => new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+
+// ---------- Tools Swapper reads from or ships with (uses and links from docs/credits.md) ----------
+const tools = [
+  { name: "u.gg", url: "https://u.gg", use: "Pro builds, and season records the client doesn't return" },
+  { name: "probuildstats", url: "https://probuildstats.com", use: "Pros' solo queue games in the Pro builds tab" },
+  { name: "op.gg", url: "https://op.gg", use: "Champion statistics for rune recommendations" },
+  { name: "lolalytics", url: "https://lolalytics.com", use: "Items, item options and skill order for each rune page" },
+  { name: "CommunityDragon", url: "https://communitydragon.org", use: "Champion art and icons while League is closed" },
+  { name: "Deceive", url: "https://github.com/molenzwiebel/Deceive", use: "Bundled unmodified, as its own program" },
+  { name: "LTK Manager", url: "https://github.com/LeagueToolkit/ltk-manager", use: "Its signed patcher applies the Korean font mod" },
+  { name: "League Toolkit", url: "https://crates.io/crates/ltk_overlay", use: "Its crates build the Korean font overlay" },
+];
+
+// ---------- Tour: six moments of a session ----------
+// Captions checked against docs/features.md, README.md and the matching components in src/full-app.
+type StepId = "draft" | "build" | "live" | "match" | "matchups" | "tray";
+type Step = { id: StepId; screen: ScreenId; title: string; text: string; crop: CropId | "tray"; phone?: CropId };
+const tour: Step[] = [
+  { id: "draft", screen: "draft", title: "Champion select, live", text: "Both teams and bans as they come in, with your lane opponent marked. The window comes to the front when champion select starts.", crop: "draft-team", phone: "m-draft-picks" },
+  { id: "build", screen: "draft", title: "Your build, applied", text: "Runes, summoner spells, skill order and items for your matchup. Apply all sends them to the client in one click.", crop: "draft-build" },
+  { id: "live", screen: "live", title: "In game, know the lobby", text: "Both teams with each player's rank and recent form while you are in a game.", crop: "live-blue", phone: "m-live-rows" },
+  { id: "match", screen: "match", title: "After the game", text: "Every player's rank, items, KDA and score, with gold, objective and kill graphs one tab away.", crop: "match-score", phone: "m-match-rows" },
+  { id: "matchups", screen: "matchups", title: "Learn the matchup", text: "Pick your champion and the enemy for the win rate, the matchup build and, where one exists, a written lane guide with its sources.", crop: "mu-guide", phone: "m-mu-tips" },
+  { id: "tray", screen: "dashboard", title: "Switch from the tray", text: "Every saved account one click away from the Windows tray. No password, no login screen.", crop: "tray" },
+];
+const stageScreens = [...new Set(tour.map((s) => s.screen))];
+// The draft screen carries a spotlight that moves from the teams (draft) to the build (build).
+const pct = ([x, y, w, h]: Box) => `--x:${(x / 14.4).toFixed(3)}%;--y:${(y / 9).toFixed(3)}%;--w:${(w / 14.4).toFixed(3)}%;--h:${(h / 9).toFixed(3)}%`;
+const focusVars = (team: Box, build: Box) => `${pct(team)};${pct(build).replace(/--/g, "--b")}`;
+const SCREEN_SIZES = "min(100vw - 356px, 1440px)";
+
+const faq = [
+  {
+    // README.md (intro, License); docs/features.md (Overview)
+    q: "Is Swapper free and open source?",
+    a: "Yes. Swapper is a free Windows app, and its source code is published under the MIT License.",
+  },
+  {
+    // SECURITY.md (Privacy and storage); docs/features.md (In-game overlay); docs/accounts.md (Korean font mod)
+    q: "Is it safe to use? Can I get banned?",
+    a: "Riot Games does not endorse Swapper, so nobody can promise how Riot treats third-party tools. What Swapper does: it reuses the session Riot Client already saves, reads the local Riot and League clients, and never asks for your password. The optional overlay draws its own window and does not inject into or read the game's memory. One optional feature, the Korean font mod, changes League's game files while a game runs. It is off by default, and you use it at your own risk.",
+  },
+  {
+    // SECURITY.md (Privacy and storage); src-tauri/src/vault.rs (CryptProtectData)
+    q: "Where are my credentials and sessions kept?",
+    a: "Swapper never sees your password. It saves Riot Client's \"Stay signed in\" session in %LOCALAPPDATA%\\Swapper, encrypted with Windows DPAPI for your Windows user. Sessions are not sent to your phone or to a Swapper server.",
+  },
+  {
+    // README.md (intro); src-tauri/src/vault.rs (LaunchTarget: RiotClient, League, Valorant)
+    q: "Which games and platforms does it support?",
+    a: "Swapper runs on Windows. Its stats, builds and draft tools are for League of Legends. After a switch, each account can open League, VALORANT or just Riot Client.",
+  },
+  {
+    // docs/accounts.md (Add and switch accounts)
+    q: "How do I add an account?",
+    a: "Open the flyout and choose Add account, then sign in through the official Riot Client with \"Stay signed in\" selected. League does not need to be open. Swapper detects the account and offers Save Account.",
+  },
+  {
+    // docs/accounts.md (Account features); docs/features.md (Restart client)
+    q: "What happens if I switch while I'm in a game?",
+    a: "Swapper refuses to switch while a game is running. It never restarts the client during a game, and in champion select it asks first, because a restart there means a dodge.",
+  },
+  {
+    // docs/accounts.md (Add and switch accounts)
+    q: "Should I use Riot Client's Sign out between accounts?",
+    a: "No. Signing out in Riot Client can invalidate a session Swapper needs to restore. Use Swapper to move between accounts. If a saved session expires, sign in to that account again and choose Repair account.",
+  },
+  {
+    // README.md (Download); docs/features.md (Installing and updating)
+    q: "How do updates work?",
+    a: "Swapper checks for updates itself and installs them with Update & Restart. The installer is currently unsigned, so Windows may ask you to confirm that you trust it.",
+  },
+];
+---
+
+<BaseLayout>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a href="#top" class="brand-lockup" aria-label="Swapper home">
+        <img src="/swapper.svg" alt="" width="24" height="24" />
+        <span class="brand-wordmark">Swapper</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#tour">Tour</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#faq">FAQ</a>
+        <a href="#changelog">Changelog</a>
+      </nav>
+
+      <a href="#try" class="btn btn-ghost is-compact needs-wide header-try" data-try>Try it in your browser</a>
+      <a href="#download" class="btn btn-download is-compact">
+        <WindowsLogo size={14} weight="fill" aria-hidden="true" />
+        <span>Download</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="top" class="hero" aria-labelledby="hero-heading">
+      <div class="wrap hero-head">
+        <h1 id="hero-heading" class="hero-title">Swap accounts.<br />Skip the login screen.</h1>
+        <p class="hero-lead">Swapper restores Riot Client's own saved sign-ins, then keeps your rank, drafts and matchups one click away.</p>
+        <div class="hero-actions">
+          <a href={latest.download} class="btn btn-download" data-rel-download>
+            <WindowsLogo size={16} weight="fill" aria-hidden="true" />
+            <span>Download for Windows</span>
+            <span class="btn-tag" data-rel-tag>{latest.tag}</span>
+          </a>
+          <a href="#try" class="btn btn-ghost needs-wide" data-try>Try it in your browser</a>
+        </div>
+        <p class="release-line">
+          <span data-rel-tag>{latest.tag}</span>
+          <span aria-hidden="true">·</span>
+          <time data-rel-when datetime={latest.date}>released {fmtDate(latest.date)}</time>
+          <span aria-hidden="true">·</span>
+          <a href={latest.url} data-rel-notes>What's new<ArrowUpRight size={13} weight="bold" aria-hidden="true" /></a>
+        </p>
+      </div>
+
+      <!-- The real app mounts here on wide screens once the page has loaded; the still stays for everyone else. -->
+      <div class="wrap hero-stage">
+        <div id="try" class="hero-window" data-app-w={APP_W}>
+          <picture>
+            <source media="(max-width: 860px)" type="image/avif" srcset="/showcase/m-dash-gauge.avif" />
+            <source media="(max-width: 860px)" type="image/webp" srcset="/showcase/m-dash-gauge.webp" />
+            <source type="image/avif" srcset={screenSet("dashboard", "avif")} sizes="(min-width: 1264px) 1200px, 100vw" />
+            <source type="image/webp" srcset={screenSet("dashboard", "webp")} sizes="(min-width: 1264px) 1200px, 100vw" />
+            <img
+              class="hero-still"
+              src="/showcase/dashboard-2880.webp"
+              alt="The Swapper dashboard after a 10 win evening: rank, today's games, a 30 day LP graph and recent matches."
+              width="2880"
+              height="1800"
+              fetchpriority="high"
+            />
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section class="tools" aria-label="Tools Swapper works with">
+      <ul class="wrap mq-track">
+        {tools.map((t) => (
+          <li>
+            <a href={t.url} class="mq-item" target="_blank" rel="noopener">
+              <span class="mq-name">{t.name}</span>
+              <span class="mq-use">{t.use}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="wrap tools-note">Not affiliated with any of these projects.</p>
+    </section>
+
+    <section id="tour" class="tour" aria-labelledby="tour-heading">
+      <div class="wrap tour-intro reveal">
+        <h2 id="tour-heading" class="section-title">From queue to post-game, in one app.</h2>
+        <p>Real screens from Swapper with invented players and real patch 26.23 data.</p>
+      </div>
+
+      <!-- Pinned stage: markers pick the step, a tiny script below turns it on; changes are time-based. -->
+      <div class="tour-track tc" style={`--marks: ${tour.length}`}>
+        <div class="tc-markers" aria-hidden="true">
+          {tour.map((step) => <span class="tc-mark" data-step={step.id} data-screen={step.screen}></span>)}
+        </div>
+        <div class="tc-stage" data-step={tour[0].id}>
+          <div class="tc-copy">
+            <div class="tc-progress"><span></span></div>
+            <div class="tc-caps">
+              {tour.map((step, i) => (
+                <div class:list={["tc-cap", { "is-on": i === 0 }]} data-step={step.id}>
+                  <h3>{step.title}</h3>
+                  <p>{step.text}</p>
+                </div>
+              ))}
+            </div>
+            <a href="#try" class="btn btn-ghost tc-try" data-try>Try it in your browser</a>
+          </div>
+          <div class="tc-window" aria-hidden="true">
+            {stageScreens.map((screen, i) => (
+              <div class:list={["tc-screen", { "is-on": i === 0 }]} data-screen={screen}>
+                <picture>
+                  <source type="image/avif" srcset={screenSet(screen, "avif")} sizes={SCREEN_SIZES} />
+                  <source type="image/webp" srcset={screenSet(screen, "webp")} sizes={SCREEN_SIZES} />
+                  <img src={largest(screen)} alt="" width="1440" height="900" loading="lazy" decoding="async" data-app-w={APP_W} />
+                </picture>
+                {screen === "draft" && <div class="tc-focus" style={focusVars(box("draft-team"), box("draft-build"))}></div>}
+                {screen === "dashboard" && (
+                  <>
+                    <div class="tc-dim"></div>
+                    <div class="tc-taskbar"><img src="/swapper.svg" alt="" width="20" height="20" /></div>
+                    <div class="tc-tray">
+                      <picture>
+                        <source type="image/avif" srcset="/showcase/tray.avif" />
+                        <img src="/showcase/tray.webp" alt="" width="400" height="640" loading="lazy" decoding="async" data-app-w="400" />
+                      </picture>
+                    </div>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Stacked steps: every width without the stage, and everyone who prefers reduced motion. -->
+      <ol class="wrap tour-list">
+        {tour.map((step) => {
+          const isTray = step.crop === "tray";
+          const w = isTray ? 400 : box(step.crop as CropId)[2];
+          const h = isTray ? 640 : box(step.crop as CropId)[3];
+          const pw = step.phone ? box(step.phone)[2] : w;
+          const ph = step.phone ? box(step.phone)[3] : h;
+          return (
+            <li class="tl-step reveal">
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+              <div class="tl-pan" tabindex="0" role="region" aria-label={`${step.title}: screenshot, scrolls sideways when wider than the screen`} style={`--w: ${w}; --wm: ${pw}`}>
+                <picture>
+                  {step.phone && <source media="(max-width: 860px)" type="image/avif" srcset={`/showcase/${step.phone}.avif`} width={pw * 2} height={ph * 2} />}
+                  {step.phone && <source media="(max-width: 860px)" type="image/webp" srcset={`/showcase/${step.phone}.webp`} width={pw * 2} height={ph * 2} />}
+                  <source type="image/avif" srcset={`/showcase/${step.crop}.avif`} />
+                  <img src={`/showcase/${step.crop}.webp`} alt={`Swapper: ${step.title}`} width={w * 2} height={h * 2} loading="lazy" decoding="async" data-app-w={w} data-phone-w={pw} />
+                </picture>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </section>
+
+    <section id="how-it-works" class="section section-how" aria-labelledby="how-heading">
+      <div class="wrap">
+        <h2 id="how-heading" class="section-title reveal">Sign in once per account. Then never again.</h2>
+
+        <ol class="how-rail">
+          <li class="how-step reveal">
+            <span class="how-icon" aria-hidden="true"><SignIn size={20} /></span>
+            <h3>Sign in through Riot Client</h3>
+            <p>Use the official client with "Stay signed in" ticked. Swapper spots the account and offers to save it.</p>
+          </li>
+          <li class="how-step reveal">
+            <span class="how-icon" aria-hidden="true"><Key size={20} /></span>
+            <h3>Swapper keeps the session</h3>
+            <p>The session is encrypted on your PC with your Riot ID and icon. Your password never reaches Swapper.</p>
+          </li>
+          <li class="how-step reveal">
+            <span class="how-icon" aria-hidden="true"><Swap size={20} /></span>
+            <h3>Click to switch</h3>
+            <p>Swapper closes the Riot and League clients, restores the account you picked and opens League, VALORANT or just Riot Client, your choice per account.</p>
+            <a href="#try" class="text-link needs-wide" data-try>
+              <span>Try Switch account in the live app</span>
+              <ArrowUpRight size={14} weight="bold" aria-hidden="true" />
+            </a>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="faq" class="section section-faq" aria-labelledby="faq-heading">
+      <div class="wrap faq-grid">
+        <div class="faq-head reveal">
+          <h2 id="faq-heading" class="section-title">FAQ</h2>
+        </div>
+        <div class="faq-list">
+          {faq.map(({ q, a }) => (
+            <details class="faq-item" name="faq">
+              <summary>
+                <span>{q}</span>
+                <Plus size={16} weight="bold" aria-hidden="true" />
+              </summary>
+              <p>{a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="changelog" class="section changelog" aria-labelledby="changelog-heading">
+      <div class="wrap">
+        <div class="cl-head reveal">
+          <h2 id="changelog-heading" class="section-title">Changelog</h2>
+          <a href={RELEASES_PAGE} class="text-link">
+            <span>Full notes</span>
+            <ArrowUpRight size={14} weight="bold" aria-hidden="true" />
+          </a>
+        </div>
+        <ol class="cl-list">
+          {releases.map((r) => (
+            <li class="cl-item reveal">
+              <time datetime={r.date}>{fmtDate(r.date)}</time>
+              <h3><a href={r.url}>{r.tag}</a></h3>
+              <ul>
+                {r.notes.map((note) => <li>{note}</li>)}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <div class="closing-band">
+    <div class="closing-wall" aria-hidden="true">
+      <canvas class="ambient-canvas" data-bg-slot="closing"></canvas>
+    </div>
+
+  <section id="download" class="closing" aria-labelledby="download-heading">
+    <div class="wrap closing-inner reveal">
+      <h2 id="download-heading">Get Swapper for Windows.</h2>
+      <p>Free and open source under the MIT License. It keeps itself up to date.</p>
+      <div class="closing-actions">
+        <a href={latest.download} class="btn btn-download is-large" data-rel-download>
+          <WindowsLogo size={16} weight="fill" aria-hidden="true" />
+          <span>Download for Windows</span>
+          <span class="btn-tag" data-rel-tag>{latest.tag}</span>
+        </a>
+        <a href="#try" class="btn btn-ghost is-large needs-wide" data-try>Try it in your browser</a>
+      </div>
+
+      <!-- README.md (Download): "The installer is currently unsigned, so Windows may ask you to confirm that you trust it." -->
+      <div class="smartscreen">
+        <ShieldWarning size={22} aria-hidden="true" />
+        <div>
+          <h3>Windows may warn you the first time</h3>
+          <p>The installer isn't code-signed yet, so Windows SmartScreen can show "Windows protected your PC". Choose <strong>More info</strong>, then <strong>Run anyway</strong>. The source code is public if you want to check it first.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="brand-lockup">
+          <img src="/swapper.svg" alt="" width="22" height="22" />
+          <span class="brand-wordmark">Swapper</span>
+        </a>
+        <p>One-click Riot account switching and a League companion for Windows.</p>
+      </div>
+      <nav class="footer-col" aria-label="Product">
+        <h2>Product</h2>
+        <a href="#tour">Tour</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#try" class="needs-wide" data-try>Try it in your browser</a>
+        <a href="#download">Download</a>
+      </nav>
+      <nav class="footer-col" aria-label="Help">
+        <h2>Help</h2>
+        <a href="#faq">FAQ</a>
+        <a href="#changelog">Changelog</a>
+        <a href="https://github.com/Phamezan/Swapper" rel="noopener">Source code</a>
+      </nav>
+      <p class="legal-disclaimer">
+        Swapper isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    import { initAmbientBackgrounds } from "../scripts/ambientBg";
+    initAmbientBackgrounds();
+
+    // ---------- Latest release: the build baked one in; ask GitHub for a newer one ----------
+    const LATEST_API = "https://api.github.com/repos/Phamezan/Swapper/releases/latest";
+    const DAY_MS = 86_400_000;
+    const ago = (iso: string) => {
+      const days = Math.floor((Date.now() - Date.parse(iso)) / DAY_MS);
+      if (!Number.isFinite(days) || days < 0) return null;
+      return days === 0 ? "released today" : days === 1 ? "released yesterday" : `released ${days} days ago`;
+    };
+    const showRelease = (tag: string, date: string, url: string, download: string | null) => {
+      document.querySelectorAll("[data-rel-tag]").forEach((el) => (el.textContent = tag));
+      document.querySelectorAll<HTMLAnchorElement>("[data-rel-notes]").forEach((a) => (a.href = url));
+      if (download) document.querySelectorAll<HTMLAnchorElement>("[data-rel-download]").forEach((a) => (a.href = download));
+      const when = document.querySelector<HTMLTimeElement>("[data-rel-when]");
+      const text = ago(date);
+      if (when && text) {
+        when.dateTime = date;
+        when.textContent = text;
+      }
+    };
+    const when = document.querySelector<HTMLTimeElement>("[data-rel-when]");
+    if (when) {
+      const text = ago(when.dateTime);
+      if (text) when.textContent = text;
+    }
+    fetch(LATEST_API, { headers: { Accept: "application/vnd.github+json" } })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((r) => {
+        if (!r || typeof r.tag_name !== "string" || typeof r.published_at !== "string" || typeof r.html_url !== "string") return;
+        const asset = Array.isArray(r.assets) ? r.assets.find((a: { name?: string }) => a.name?.endsWith("_x64-setup.exe")) : null;
+        showRelease(r.tag_name, r.published_at, r.html_url, asset?.browser_download_url ?? null);
+      })
+      .catch(() => {}); // offline or rate limited: the built-in release stays
+
+    // ---------- Hero: mount the real app over the still on wide screens ----------
+    const APP_W = 1440;
+    const READY_TEXT = "Recent games";
+    const READY_TIMEOUT_MS = 12000;
+    const heroWindow = document.getElementById("try");
+    const hero = document.querySelector<HTMLElement>(".hero");
+    const wide = matchMedia("(min-width: 1180px)");
+    let started = false;
+
+    const revealWhenReady = (frame: HTMLIFrameElement) => {
+      const t0 = performance.now();
+      const tick = () => {
+        const text = frame.contentDocument?.body?.textContent ?? "";
+        if (text.includes(READY_TEXT) || performance.now() - t0 > READY_TIMEOUT_MS) {
+          setTimeout(() => {
+            frame.inert = false;
+            hero?.classList.add("is-live");
+          }, 300); // let art and icons settle
+        } else setTimeout(tick, 150);
+      };
+      tick();
+    };
+
+    const startApp = () => {
+      if (started || !heroWindow || !wide.matches) return;
+      started = true;
+      const frame = document.createElement("iframe");
+      frame.className = "hero-frame";
+      frame.title = "Swapper, live in your browser with invented accounts";
+      frame.src = "/demo/full?active=kestrel";
+      frame.inert = true; // invisible until ready: keep it out of the tab order
+      const fit = () => (frame.style.zoom = String(heroWindow.clientWidth / APP_W));
+      new ResizeObserver(fit).observe(heroWindow);
+      fit();
+      frame.addEventListener("load", () => (revealWhenReady(frame), wheelScrollsPage(frame)), { once: true });
+      heroWindow.append(frame);
+    };
+
+    // Like an embedded map: over the app the wheel scrolls the page until the visitor clicks in the app, then
+    // the app until the pointer leaves it. Keyboard and touch never send wheel events, so they are unaffected.
+    const LINE_PX = 40;
+    let glideTo: number | null = null;
+    const glide = () => {
+      if (glideTo === null) return;
+      const left = glideTo - scrollY;
+      const done = Math.abs(left) < 1;
+      scrollTo({ top: done ? glideTo : scrollY + left * 0.35, behavior: "instant" });
+      if (done) glideTo = null;
+      else requestAnimationFrame(glide);
+    };
+    addEventListener("wheel", () => (glideTo = null), { passive: true }); // a wheel on the page itself takes over
+
+    const wheelScrollsPage = (frame: HTMLIFrameElement) => {
+      const win = frame.contentWindow;
+      const doc = frame.contentDocument;
+      if (!win || !doc) return;
+      let engaged = false;
+      win.addEventListener("pointerdown", () => (engaged = true), true);
+      doc.documentElement.addEventListener("mouseleave", () => (engaged = false));
+      win.addEventListener(
+        "wheel",
+        (event) => {
+          if (engaged || event.ctrlKey) return; // ctrl+wheel is browser zoom
+          event.preventDefault();
+          event.stopImmediatePropagation(); // the app's own wheel handlers must not move it either
+          // Deltas inside the zoomed frame are in its own CSS px; scale back so a notch moves the page as usual.
+          const zoom = Number(frame.style.zoom) || 1;
+          const px = event.deltaMode === 1 ? event.deltaY * LINE_PX : event.deltaMode === 2 ? event.deltaY * innerHeight : event.deltaY * zoom;
+          const max = document.documentElement.scrollHeight - innerHeight;
+          const idle = glideTo === null;
+          glideTo = Math.max(0, Math.min(max, (glideTo ?? scrollY) + px));
+          if (idle) requestAnimationFrame(glide);
+        },
+        { capture: true, passive: false },
+      );
+    };
+
+    // Auto start: after load, when the browser is idle and the hero is on screen. No click needed.
+    const autoStart = () => {
+      if (!heroWindow) return;
+      const io = new IntersectionObserver((entries) => {
+        if (!entries.some((e) => e.isIntersecting) || !wide.matches) return;
+        io.disconnect();
+        startApp();
+      });
+      io.observe(heroWindow);
+    };
+    const whenIdle = (cb: () => void) => ("requestIdleCallback" in window ? requestIdleCallback(cb, { timeout: 3000 }) : setTimeout(cb, 300));
+    if (document.readyState === "complete") whenIdle(autoStart);
+    else addEventListener("load", () => whenIdle(autoStart), { once: true });
+
+    // "Try" links are plain #try anchors (the hero window); they also start the app right away.
+    document.querySelectorAll("[data-try]").forEach((link) => link.addEventListener("click", startApp));
+    if (location.hash === "#try") startApp();
+    addEventListener("hashchange", () => location.hash === "#try" && startApp());
+
+    // ---------- Tour stage: markers crossing the middle of the viewport pick the step ----------
+    const tc = document.querySelector<HTMLElement>(".tc");
+    const stageEl = tc?.querySelector<HTMLElement>(".tc-stage");
+    if (tc && stageEl) {
+      const screens = [...stageEl.querySelectorAll<HTMLElement>(".tc-screen")];
+      const caps = [...stageEl.querySelectorAll<HTMLElement>(".tc-cap")];
+      let current = stageEl.dataset.step;
+
+      const show = async (step: string, screen: string) => {
+        if (step === current) return;
+        current = step;
+        // Decode first so a screen never paints half-loaded mid-transition.
+        await screens.find((s) => s.dataset.screen === screen)?.querySelector("img")?.decode().catch(() => {});
+        if (current !== step) return; // a faster scroll already moved on
+        stageEl.dataset.step = step;
+        for (const el of screens) el.classList.toggle("is-on", el.dataset.screen === screen);
+        for (const el of caps) el.classList.toggle("is-on", el.dataset.step === step);
+      };
+
+      const marksIo = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) if (entry.isIntersecting) {
+            const { step, screen } = (entry.target as HTMLElement).dataset;
+            void show(step!, screen!);
+          }
+        },
+        { rootMargin: "-50% 0px -50% 0px" },
+      );
+      tc.querySelectorAll(".tc-mark").forEach((m) => marksIo.observe(m));
+    }
+
+    // Reveal-on-scroll; content is visible without JS because only `.js .reveal` starts hidden.
+    const items = document.querySelectorAll(".reveal");
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+      items.forEach((el) => el.classList.add("is-in"));
+    } else {
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            entry.target.classList.add("is-in");
+            io.unobserve(entry.target);
+          }
+        },
+        { rootMargin: "0px 0px -10% 0px", threshold: 0.12 },
+      );
+      items.forEach((el) => io.observe(el));
+    }
+  </script>
+</BaseLayout>
