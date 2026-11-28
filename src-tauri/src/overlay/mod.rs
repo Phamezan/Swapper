@@ -575,6 +575,18 @@ mod tests {
             Some(true)
         );
         assert_eq!(
+            session_scope(&json!({"map":{"id":11},"gameData":{"queue":{"id":3130,"gameMode":"CLASSIC"}}})),
+            Some(true)
+        );
+        assert_eq!(
+            session_scope(&json!({"map":{"id":11},"gameData":{"queue":{"id":3140,"gameMode":"PRACTICETOOL"}}})),
+            Some(true)
+        );
+        assert_eq!(
+            session_scope(&json!({"map":{"id":12},"gameData":{"queue":{"id":3130,"gameMode":"ARAM"}}})),
+            Some(false)
+        );
+        assert_eq!(
             session_scope(&json!({"map":{"id":12},"gameData":{"queue":{"id":450}}})),
             Some(false)
         );

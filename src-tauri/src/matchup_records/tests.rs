@@ -27,7 +27,7 @@ fn record_identifies_the_same_lane_on_the_opposing_team() {
 
 #[test]
 fn record_skips_remakes_other_queues_and_incomplete_teams() {
-    for queue in [400,420,440] {
+    for queue in [400,420,440,710] {
         let mut value=game(); value["queueId"]=json!(queue);
         assert!(record_from_game(&value,"own").is_some());
     }

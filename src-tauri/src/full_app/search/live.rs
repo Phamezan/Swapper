@@ -107,7 +107,7 @@ fn parse_game(value: &Value, id: &str) -> Option<View> {
         }
     }
     if !players.iter().any(|p| p.riot_id.to_lowercase() == id.to_lowercase()) { return None; }
-    let queue = match queue_id { 420 => "Ranked Solo/Duo", 440 => "Ranked Flex", 450 => "ARAM", 400 | 430 | 490 => "Normal", _ => "Live game" };
+    let queue = match queue_id { 420 => "Ranked Solo/Duo", 440 => "Ranked Flex", 710 => "Ranked 5s", 450 => "ARAM", 400 | 430 | 490 => "Normal", _ => "Live game" };
     let supported = crate::game_mode::supports_rift(&json!({"gameData":{"queue":{"id":queue_id}}}));
     if !supported { players.clear(); }
     Some(View { supported, game_id: 0, queue_id, queue: queue.into(), map_id: 0, players,
@@ -266,6 +266,11 @@ mod tests {
         assert_eq!(view.players.len(), 10);
         assert!(view.players.iter().all(|p| !p.is_self && p.live.is_none()));
         assert_eq!(view.game_time, None);
+        let mut ranked_5s = data.clone();
+        ranked_5s["data"]["getLiveGame"]["queueId"] = json!(710);
+        let view_5s = parse_game(&ranked_5s, "Example 0#TAG").unwrap();
+        assert_eq!(view_5s.queue, "Ranked 5s");
+        assert!(view_5s.supported);
         assert!(parse_game(&data, "Missing#TAG").is_none());
         data["data"]["getLiveGame"]["teamA"][0]["championId"] = json!(-1);
         assert!(parse_game(&data, "Example 0#TAG").is_none());

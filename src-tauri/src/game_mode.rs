@@ -17,8 +17,8 @@ pub fn supports_rift(session: &Value) -> bool {
     }
     let data = &session["gameData"];
     let queues = [&data["queue"], &session["queue"]];
-    // SR custom and Practice Tool, draft/blind, solo/flex, Swiftplay/Quickplay, Clash and ranked 5s (710); other queues are out of scope.
-    const SR_QUEUES: [i64; 9] = [0, 400, 420, 430, 440, 480, 490, 700, 710];
+    // SR custom (0, 3130 tournament draft, 3140 Practice Tool), draft/blind, solo/flex, Swiftplay/Quickplay, Clash and ranked 5s (710); other queues are out of scope.
+    const SR_QUEUES: [i64; 11] = [0, 400, 420, 430, 440, 480, 490, 700, 710, 3130, 3140];
     for queue in queues {
         if queue["id"].as_i64().is_some_and(|id| id > 0 && !SR_QUEUES.contains(&id)) {
             return false;
@@ -47,15 +47,17 @@ mod tests {
 
     #[test]
     fn sr_queues_and_custom_games() {
-        for id in [0, 400, 420, 430, 440, 480, 490, 700, 710] {
+        for id in [0, 400, 420, 430, 440, 480, 490, 700, 710, 3130, 3140] {
             assert!(supports_rift(&json!({"gameData":{"queue":{"id":id,"mapId":11,"gameMode":"CLASSIC"}}})), "queue {id}");
             assert!(supports_rift(&json!({"gameData":{"queue":{"id":id}}})), "queue only {id}");
         }
         assert!(supports_rift(&json!({"gameData":{"isCustomGame":true},"map":{"id":11,"gameMode":"CLASSIC"}})));
+        assert!(supports_rift(&json!({"gameData":{"isCustomGame":true,"queue":{"id":3130,"mapId":11,"gameMode":"CLASSIC"}},"map":{"id":11,"gameMode":"CLASSIC"}})));
         assert!(supports_rift(&json!({"gameData":{"queue":{"id":-1,"mapId":11,"gameMode":"CLASSIC"}}})));
         assert!(supports_rift(&json!({"queue":{"id":480,"mapId":11,"gameMode":"SWIFTPLAY"}})));
         // Practice Tool on Summoner's Rift.
         assert!(supports_rift(&json!({"map":{"id":11,"gameMode":"PRACTICETOOL"},"gameData":{"queue":{"id":-1}}})));
+        assert!(supports_rift(&json!({"map":{"id":11,"gameMode":"PRACTICETOOL"},"gameData":{"queue":{"id":3140,"mapId":11,"gameMode":"PRACTICETOOL"}}})));
         assert!(supports_rift(&json!({"gameData":{"queue":{"type":"PRACTICETOOL"}}})));
         assert!(supports_rift(&json!({"gameData":{"gameMode":"PRACTICETOOL","mapNumber":11}})), "Live Client");
     }
@@ -81,6 +83,7 @@ mod tests {
         assert!(!supports_rift(&json!({"gameData":{"queue":{"type":"BOT"}}})));
         assert!(!supports_rift(&json!({"queue":{"id":870}})));
         assert!(!supports_rift(&json!({"map":{"id":12,"gameMode":"PRACTICETOOL"}})), "Practice Tool on another map");
+        assert!(!supports_rift(&json!({"map":{"id":12,"gameMode":"ARAM"},"gameData":{"queue":{"id":3130,"mapId":12,"gameMode":"ARAM"}}})), "Custom tournament draft on another map");
     }
 
     #[test]

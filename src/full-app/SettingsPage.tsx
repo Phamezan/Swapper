@@ -40,6 +40,7 @@ type Props = {
   onLaunchTargetChange: (target: LaunchTarget) => void;
   koreanFont: boolean;
   customMods: boolean;
+  customModsPaused: boolean;
   customModsRiskAck: boolean;
   onCustomModsChange: (enabled: boolean, riskAck: boolean) => void;
   ltkInstalled: boolean;
@@ -143,6 +144,7 @@ export function SettingsPage(props: Props) {
           onLaunchTargetChange={props.onLaunchTargetChange}
           koreanFont={props.koreanFont}
           customMods={props.customMods}
+          customModsPaused={props.customModsPaused}
           customModsRiskAck={props.customModsRiskAck}
           onCustomModsChange={props.onCustomModsChange}
           ltkInstalled={props.ltkInstalled}

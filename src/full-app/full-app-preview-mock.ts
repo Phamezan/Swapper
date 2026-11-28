@@ -191,7 +191,7 @@ export function installFullAppMock(options: FullAppMockOptions = {}) {
     isSwitching: false,
     useDeceive: false, riotExe: null, riotDetected: true, deceiveDetected: true, autoApplyTopPreset: false, runeTier: "emerald_plus",
     applySpellsWithRunes: true, importItemsWithRunes: true, hotkey: initialHotkey, hotkeyActive: Boolean(initialHotkey), notificationsEnabled: true, readyCheckNotifications: true,
-    koreanFont: false, customMods: shellState.has("mods"), customModsRiskAck: shellState.has("mods"), modsRegionBlocked: false, ltkInstalled: shellState.has("mods"),
+    koreanFont: false, customMods: shellState.has("mods"), customModsPaused: false, customModsRiskAck: shellState.has("mods"), modsRegionBlocked: false, ltkInstalled: shellState.has("mods"),
     ltkVersion: null, ltkOutdated: false, ltkLatestVersion: null, ltkNeedsSetup: false, ltkNotice: null,
     remote: {
       enabled: false, state: "disabled", address: null, tailscaleAddress: null, lanAddress: null, lanMessage: null, lanFirewallNeeded: false, message: null,

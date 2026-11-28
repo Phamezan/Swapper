@@ -5,6 +5,20 @@ use std::sync::atomic::{AtomicBool, AtomicU64, Ordering};
 use std::sync::{Arc, Mutex};
 use uuid::Uuid;
 
+/// Temporarily pause Custom mods while a Vanguard update keeps LTK Manager broken.
+pub(crate) const CUSTOM_MODS_PAUSED: bool = true;
+
+fn effective_custom_mods(saved: bool) -> bool {
+    !CUSTOM_MODS_PAUSED && saved
+}
+
+fn check_custom_mods_change(enabled: bool) -> Result<(), String> {
+    if CUSTOM_MODS_PAUSED && enabled {
+        return Err("Custom mods are paused: a Vanguard update broke LTK Manager.".into());
+    }
+    Ok(())
+}
+
 #[derive(Clone, Default)]
 pub struct SwitchGuard {
     in_progress: Arc<AtomicBool>,
@@ -255,12 +269,13 @@ impl AppState {
         vault::save(&config)
     }
 
-    /// Whether custom mods are on. Off until the user turns them on.
+    /// Whether custom mods are on. Off until the user turns them on (or while paused).
     pub(crate) fn custom_mods_enabled(&self) -> bool {
-        self.config.lock().map(|config| config.custom_mods).unwrap_or(false)
+        effective_custom_mods(self.config.lock().map(|config| config.custom_mods).unwrap_or(false))
     }
 
     pub(crate) fn set_custom_mods_enabled(&self, enabled: bool, risk_ack: bool) -> Result<(), String> {
+        check_custom_mods_change(enabled)?;
         let mut config = self.config.lock().map_err(|e| { eprintln!("Settings lock poisoned: {e}"); "Couldn't read your settings. Restart Swapper.".to_string() })?;
         config.custom_mods = enabled;
         if risk_ack {
@@ -305,6 +320,7 @@ pub(crate) struct AppView {
     ready_check_notifications: bool,
     korean_font: bool,
     custom_mods: bool,
+    custom_mods_paused: bool,
     custom_mods_risk_ack: bool,
     mods_region_blocked: bool,
     /// Whether LTK Manager is installed. The UI shows the toggle only when it is.
@@ -365,7 +381,8 @@ pub(crate) fn view(
         notifications_enabled: config.notifications_enabled.unwrap_or(true),
         ready_check_notifications: config.ready_check_notifications.unwrap_or(true),
         korean_font: config.korean_font,
-        custom_mods: config.custom_mods,
+        custom_mods: effective_custom_mods(config.custom_mods),
+        custom_mods_paused: CUSTOM_MODS_PAUSED,
         custom_mods_risk_ack: config.custom_mods_risk_ack,
         mods_region_blocked: config.accounts.iter().find(|a| Some(a.id) == config.active_id).is_some_and(|a| mods::library::region_blocked(a.platform.as_deref(), a.region.as_deref())),
         ltk_installed: mods::patcher::ltk_installed(),
@@ -494,5 +511,38 @@ mod tests {
             .collect();
         assert_eq!(wins.iter().filter(|won| **won).count(), 1);
         assert!(guard.is_switching());
+    }
+
+    #[test]
+    fn custom_mods_paused_hides_and_refuses_enable_without_erasing_saved_value() {
+        let mut config = vault::Config::default();
+        config.custom_mods = true;
+        assert!(CUSTOM_MODS_PAUSED);
+        assert!(!effective_custom_mods(config.custom_mods));
+        assert!(check_custom_mods_change(true).is_err());
+        assert!(config.custom_mods, "saved config value must not be erased");
+        let remote = remote::RemoteStatus {
+            enabled: false,
+            state: remote::RemoteState::Disabled,
+            address: None,
+            tailscale_address: None,
+            lan_address: None,
+            lan_message: None,
+            lan_firewall_needed: false,
+            message: None,
+            tailscale_installed: false,
+            tailscale_running: false,
+            dns_name: None,
+            local_address: None,
+            league_running: false,
+            lcu_connected: false,
+            lan_reconnect_needed: false,
+            lan_reconnect_old_address: None,
+            lan_reconnect_new_address: None,
+            lan_reconnect_since: None,
+        };
+        let app_view = view(&config, std::path::Path::new(""), &remote, false, false);
+        assert!(!app_view.custom_mods);
+        assert!(app_view.custom_mods_paused);
     }
 }

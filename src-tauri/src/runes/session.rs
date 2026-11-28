@@ -86,6 +86,10 @@ struct GameData {
 #[serde(rename_all = "camelCase")]
 struct GameflowQueue {
     #[serde(default)]
+    id: i64,
+    #[serde(default)]
+    map_id: i64,
+    #[serde(default)]
     game_mode: String,
 }
 
@@ -298,14 +302,23 @@ pub struct GameflowInfo {
 pub fn parse_gameflow(body: &str) -> Result<GameflowInfo, RuneError> {
     let session: GameflowSession = serde_json::from_str(body)
         .map_err(|e| RuneError::unavailable({ eprintln!("Gameflow read failed: {e}"); "Couldn't read the game state. Try again.".to_string() }))?;
+    let game_queue = session.game_data.and_then(|data| data.queue);
+    let map_id = session
+        .map
+        .map(|map| map.id)
+        .filter(|&id| id > 0)
+        .or_else(|| game_queue.as_ref().map(|q| q.map_id).filter(|&id| id > 0))
+        .unwrap_or(0);
+    let queue_id = session
+        .queue
+        .map(|queue| queue.id)
+        .filter(|&id| id > 0)
+        .or_else(|| game_queue.as_ref().map(|q| q.id).filter(|&id| id > 0))
+        .unwrap_or(0);
     Ok(GameflowInfo {
-        map_id: session.map.map(|map| map.id).unwrap_or(0),
-        queue_id: session.queue.map(|queue| queue.id).unwrap_or(0),
-        game_mode: session
-            .game_data
-            .and_then(|data| data.queue)
-            .map(|queue| queue.game_mode)
-            .unwrap_or_default(),
+        map_id,
+        queue_id,
+        game_mode: game_queue.map(|queue| queue.game_mode).unwrap_or_default(),
     })
 }
 
@@ -339,6 +352,9 @@ mod tests {
     #[test]
     fn maps_map_and_queue_to_opgg_modes() {
         assert_eq!(mode_for(11, 420), MODE_RANKED);
+        assert_eq!(mode_for(11, 710), MODE_RANKED);
+        assert_eq!(mode_for(11, 3130), MODE_RANKED);
+        assert_eq!(mode_for(11, 3140), MODE_RANKED);
         assert_eq!(mode_for(MAP_ARAM, 0), MODE_ARAM);
         assert_eq!(mode_for(0, QUEUE_ARAM), MODE_ARAM);
         assert_eq!(mode_for(MAP_ARENA, 0), MODE_ARENA);
@@ -439,6 +455,14 @@ mod tests {
         .unwrap();
         assert_eq!((info.map_id, info.queue_id), (11, 420));
         assert_eq!(info.game_mode, "CLASSIC");
+
+        // Tournament draft customs often report queue id under gameData.queue.
+        let custom = parse_gameflow(
+            r#"{"map":{"id":11},"gameData":{"queue":{"id":3130,"mapId":11,"gameMode":"CLASSIC"}}}"#,
+        )
+        .unwrap();
+        assert_eq!((custom.map_id, custom.queue_id), (11, 3130));
+        assert_eq!(custom.game_mode, "CLASSIC");
     }
 
     #[test]
@@ -599,6 +623,12 @@ mod tests {
         context.queue_id = 420;
         context.clear_enemy_without_lane();
         assert_eq!(context.enemy_champion_id, Some(238));
+
+        let mut custom = context.clone();
+        custom.map_id = 11;
+        custom.queue_id = 3130;
+        custom.clear_enemy_without_lane();
+        assert_eq!(custom.enemy_champion_id, Some(238));
 
         // An unreadable gameflow leaves map and queue at 0: the mode is unknown,
         // so no enemy is offered rather than assuming ranked.

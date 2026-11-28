@@ -120,7 +120,7 @@ fn save_roster(path: &Path, members: Vec<RosterMember>) -> Result<Vec<RosterMemb
 pub fn roles_from_history(history: &Value, puuid: &str) -> Vec<String> {
     let mut counted: Vec<(String, u64)> = Vec::new();
     for game in history["games"]["games"].as_array().into_iter().flatten().take(20) {
-        if let Some(q) = game["queueId"].as_u64() { if !matches!(q, 400 | 420 | 430 | 440 | 490 | 700) { continue; } }
+        if let Some(q) = game["queueId"].as_u64() { if !matches!(q, 400 | 420 | 430 | 440 | 490 | 700 | 710) { continue; } }
         if let Some(m) = game["mapId"].as_u64() { if m != 11 { continue; } }
         let pid = game["participantIdentities"].as_array().into_iter().flatten()
             .find(|i| i["player"]["puuid"].as_str() == Some(puuid)).and_then(|i| i["participantId"].as_u64());
@@ -148,7 +148,7 @@ pub fn build_pool(history: &Value, mastery: &Value, puuid: &str, now_ms: u64) ->
     let mut roles: HashMap<i64, HashMap<String, u64>> = HashMap::new();
     for game in history["games"]["games"].as_array().into_iter().flatten().take(20) {
         // Only Summoner's Rift queues count toward pools (not ARAM/Arena/etc.).
-        if let Some(q) = game["queueId"].as_u64() { if !matches!(q, 400 | 420 | 430 | 440 | 490 | 700) { continue; } }
+        if let Some(q) = game["queueId"].as_u64() { if !matches!(q, 400 | 420 | 430 | 440 | 490 | 700 | 710) { continue; } }
         if let Some(m) = game["mapId"].as_u64() { if m != 11 { continue; } }
         let pid = game["participantIdentities"].as_array().into_iter().flatten()
             .find(|i| i["player"]["puuid"].as_str() == Some(puuid))

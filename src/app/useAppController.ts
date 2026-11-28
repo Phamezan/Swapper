@@ -27,7 +27,7 @@ const empty: AppState = {
   riotExe: null, riotDetected: false, deceiveDetected: false,
   autoApplyTopPreset: false, runeTier: "emerald_plus", applySpellsWithRunes: true, importItemsWithRunes: true,
   hotkey: null, hotkeyActive: false,
-  notificationsEnabled: true, readyCheckNotifications: true, koreanFont: false, customMods: false, customModsRiskAck: false, modsRegionBlocked: false, ltkInstalled: false, ltkVersion: null, ltkOutdated: false, ltkLatestVersion: null, ltkNeedsSetup: false, ltkNotice: null, remote: emptyRemote,
+  notificationsEnabled: true, readyCheckNotifications: true, koreanFont: false, customMods: false, customModsPaused: false, customModsRiskAck: false, modsRegionBlocked: false, ltkInstalled: false, ltkVersion: null, ltkOutdated: false, ltkLatestVersion: null, ltkNeedsSetup: false, ltkNotice: null, remote: emptyRemote,
 };
 
 /** Polls (2 s apart) of "unavailable" in a row before the add flow gives up: about 30 s. */

@@ -135,6 +135,7 @@ function App({ fullApp }: { fullApp?: FullAppBridge } = {}) {
               onLaunchTargetChange={(target) => void setLaunchTarget(null, target)}
               koreanFont={koreanFont}
               customMods={customMods}
+              customModsPaused={data.customModsPaused}
               customModsRiskAck={data.customModsRiskAck}
               onCustomModsChange={(enabled, riskAck) => void setCustomModsSetting(enabled, riskAck)}
               ltkInstalled={data.ltkInstalled}

@@ -604,23 +604,14 @@ async fn fresh(app: &tauri::AppHandle, previous: Option<&Snapshot>) -> Result<Sn
     })
 }
 
-/// League Client closed and no saved snapshot to fall back on: the active
-/// account's dashboard from u.gg instead — identity, Solo/Duo rank and up to
-/// HISTORY_GAMES season games (ranked queues only; u.gg has no normals).
-/// Best-effort: any failure keeps the signed-out screen.
-async fn season_fallback(app: &tauri::AppHandle) -> Option<Snapshot> {
-    let (accounts, active_id) = {
-        let state = app.try_state::<crate::AppState>()?;
-        let config = state.config.lock().ok()?;
-        (config.accounts.clone(), config.active_id)
-    };
-    let account = accounts
-        .iter()
-        .find(|a| Some(a.id) == active_id && a.riot_id().is_some())
-        .or_else(|| accounts.iter().find(|a| a.riot_id().is_some()))?;
-    let riot_id = account.riot_id()?;
-    let (name, tag) = riot_id.split_once('#')?;
-    let found = search::season::identity(name, tag, account.region.as_deref()).await?;
+/// Fetches up to `HISTORY_GAMES` season games from u.gg for a Riot ID without
+/// requiring the League Client to be closed.
+async fn season_games(
+    name: &str,
+    tag: &str,
+    region: Option<&str>,
+) -> Option<(search::season::Identity, Vec<model::Game>)> {
+    let found = search::season::identity(name, tag, region).await?;
     let mut games: Vec<model::Game> = Vec::new();
     for page in 1..=(HISTORY_GAMES / 20) as u32 {
         let Ok(part) = search::season::page(name, tag, found.region, page).await else { break };
@@ -637,6 +628,52 @@ async fn season_fallback(app: &tauri::AppHandle) -> Option<Snapshot> {
     if games.is_empty() {
         return None;
     }
+    Some((found, games))
+}
+
+async fn season_games_for_summoner(
+    app: &tauri::AppHandle,
+    summoner: &model::Summoner,
+) -> Option<Vec<model::Game>> {
+    let (saved_riot_id, region) = app
+        .try_state::<crate::AppState>()
+        .and_then(|state| {
+            let config = state.config.lock().ok()?;
+            let account = config
+                .accounts
+                .iter()
+                .find(|a| a.puuid.as_deref() == Some(summoner.puuid.as_str()))?;
+            Some((account.riot_id(), account.region.clone()))
+        })
+        .unwrap_or((None, None));
+    let riot_id = summoner
+        .riot_id
+        .contains('#')
+        .then_some(summoner.riot_id.as_str())
+        .or(saved_riot_id.as_deref())?;
+    let (name, tag) = riot_id.split_once('#')?;
+    season_games(name, tag, region.as_deref())
+        .await
+        .map(|(_, games)| games)
+}
+
+/// League Client closed and no saved snapshot to fall back on: the active
+/// account's dashboard from u.gg instead — identity, Solo/Duo rank and up to
+/// HISTORY_GAMES season games (ranked queues only; u.gg has no normals).
+/// Best-effort: any failure keeps the signed-out screen.
+async fn season_fallback(app: &tauri::AppHandle) -> Option<Snapshot> {
+    let (accounts, active_id) = {
+        let state = app.try_state::<crate::AppState>()?;
+        let config = state.config.lock().ok()?;
+        (config.accounts.clone(), config.active_id)
+    };
+    let account = accounts
+        .iter()
+        .find(|a| Some(a.id) == active_id && a.riot_id().is_some())
+        .or_else(|| accounts.iter().find(|a| a.riot_id().is_some()))?;
+    let riot_id = account.riot_id()?;
+    let (name, tag) = riot_id.split_once('#')?;
+    let (found, games) = season_games(name, tag, account.region.as_deref()).await?;
     let rank = crate::runes::ugg_record::lookup(name, tag, found.region)
         .await
         .unwrap_or_default()
@@ -669,6 +706,68 @@ async fn season_fallback(app: &tauri::AppHandle) -> Option<Snapshot> {
         rank,
         champion_names,
     ))
+}
+
+struct ResolvedSnapshot {
+    snapshot: Snapshot,
+    save_cache: bool,
+    stale: bool,
+    message: Option<String>,
+}
+
+/// Decides what snapshot to show and whether to overwrite the disk cache when
+/// the LCU returned a live snapshot. An empty match history (common right after
+/// client login or an account switch) never overwrites the saved cache; it
+/// keeps the live summoner/rank/LP data and fills games from the same-account
+/// cache or u.gg season games instead.
+fn resolve_fresh_snapshot(
+    mut fresh: Snapshot,
+    previous: Option<Snapshot>,
+    fallback_games: Option<Vec<model::Game>>,
+) -> ResolvedSnapshot {
+    if !fresh.games.is_empty() {
+        return ResolvedSnapshot {
+            snapshot: fresh,
+            save_cache: true,
+            stale: false,
+            message: None,
+        };
+    }
+    if let Some(cached) =
+        previous.filter(|p| p.summoner.puuid == fresh.summoner.puuid && !p.games.is_empty())
+    {
+        fresh.games = cached.games;
+        lp::annotate(&mut fresh.games, &fresh.lp_history);
+        if fresh.mmr.is_none() {
+            fresh.mmr = cached.mmr;
+        }
+        fresh.summaries = model::summaries(&fresh.games);
+        return ResolvedSnapshot {
+            snapshot: fresh,
+            save_cache: false,
+            stale: true,
+            message: Some("No recent games in League's history — showing saved games.".into()),
+        };
+    }
+    if let Some(mut games) = fallback_games.filter(|g| !g.is_empty()) {
+        games.sort_by_key(|g| std::cmp::Reverse(g.created_at));
+        games.truncate(HISTORY_GAMES);
+        lp::annotate(&mut games, &fresh.lp_history);
+        fresh.summaries = model::summaries(&games);
+        fresh.games = games;
+        return ResolvedSnapshot {
+            snapshot: fresh,
+            save_cache: false,
+            stale: true,
+            message: Some("No recent games in League's history — showing season games from u.gg.".into()),
+        };
+    }
+    ResolvedSnapshot {
+        snapshot: fresh,
+        save_cache: false,
+        stale: true,
+        message: None,
+    }
 }
 
 /// The newest HISTORY_GAMES games, with the Dashboard's summaries over them.
@@ -709,28 +808,44 @@ pub async fn dashboard_snapshot(
             let previous = tokio::task::spawn_blocking(read_cache).await.unwrap_or(None);
             match fresh(&app, previous.as_ref()).await {
                 Ok(snapshot) => {
-                    crate::runes::blind::preload(&app, &snapshot);
-                    let bytes = serde_json::to_vec(&snapshot).ok();
+                    let has_same_cache = previous
+                        .as_ref()
+                        .is_some_and(|p| p.summoner.puuid == snapshot.summoner.puuid && !p.games.is_empty());
+                    let fallback_games = if snapshot.games.is_empty() && !has_same_cache {
+                        season_games_for_summoner(&app, &snapshot.summoner).await
+                    } else {
+                        None
+                    };
+                    let resolved = resolve_fresh_snapshot(snapshot, previous, fallback_games);
+                    crate::runes::blind::preload(&app, &resolved.snapshot);
+                    let save_cache = resolved.save_cache;
+                    let stale = resolved.stale;
+                    let message = resolved.message;
+                    let snapshot = resolved.snapshot;
+                    let bytes = save_cache.then(|| serde_json::to_vec(&snapshot).ok()).flatten();
                     let saved = tokio::task::spawn_blocking(move || {
                         if let (Some(path), Some(bytes)) = (cache_path(), bytes) {
                             if let Some(parent) = path.parent() { let _ = std::fs::create_dir_all(parent); }
                             let pending = path.with_extension("tmp");
                             if std::fs::write(&pending, bytes).is_ok() { let _ = std::fs::rename(pending, path); }
                         }
-                        let cards = cards::update(Some(&snapshot));
+                        let cards = cards::update(save_cache.then_some(&snapshot));
                         (cards, snapshot)
                     }).await;
                     let (cards, snapshot) = saved.map_err(|e| { eprintln!("Dashboard load failed: {e}"); "Couldn't load your dashboard. Try again.".to_string() })?;
-                    Ok(View { snapshot: Some(snapshot), cards, stale: false, message: None })
+                    Ok(View { snapshot: Some(snapshot), cards, stale, message })
                 },
                 Err(error) => {
                     let cards = tokio::task::spawn_blocking(|| cards::update(None)).await.unwrap_or_default();
-                    // No saved snapshot: try the u.gg season fallback before
-                    // giving up to the signed-out screen.
-                    let fell_back = previous.is_none();
-                    let snapshot = match previous {
-                        Some(saved) => Some(saved),
-                        None => season_fallback(&app).await,
+                    // No usable saved snapshot: try the u.gg season fallback
+                    // before giving up to the signed-out screen.
+                    let usable = previous.as_ref().is_some_and(|s| !s.games.is_empty());
+                    let (snapshot, fell_back) = if usable {
+                        (previous, false)
+                    } else if let Some(season) = season_fallback(&app).await {
+                        (Some(season), true)
+                    } else {
+                        (previous, false)
                     };
                     let message = if fell_back && snapshot.is_some() {
                         Some("League Client is closed — showing season stats from u.gg.".into())
@@ -842,5 +957,82 @@ mod tests {
         std::fs::write(&path, vec![b' '; 512 * 1024 + 1]).unwrap();
         assert!(read_cache_at(&path).is_none());
         std::fs::remove_file(path).unwrap();
+    }
+
+    #[test]
+    fn empty_fresh_history_uses_same_account_cache_or_ugg_without_overwriting_cache() {
+        use super::*;
+        let make_game = |id: u64, at: u64, win: bool| {
+            serde_json::from_value::<model::Game>(serde_json::json!({
+                "id": id, "queue": "solo", "championId": 103, "createdAt": at, "duration": 1800,
+                "win": win, "kills": 6, "deaths": 2, "assists": 8,
+                "metrics": [null, null, null, null, null, null]
+            }))
+            .unwrap()
+        };
+        let make_snapshot = |puuid: &str, rank_lp: u64, games: Vec<model::Game>| Snapshot {
+            summoner: model::Summoner {
+                puuid: puuid.into(),
+                summoner_id: 1,
+                riot_id: "Player#EUW".into(),
+                level: 100,
+                icon: None,
+            },
+            rank: Some(model::Rank {
+                tier: "EMERALD".into(),
+                division: "II".into(),
+                lp: rank_lp,
+                wins: 20,
+                losses: 15,
+            }),
+            fetched_at: 5000,
+            summaries: model::summaries(&games),
+            games,
+            champion_names: Default::default(),
+            lp_history: vec![],
+            mmr: None,
+        };
+
+        // 1. Non-empty fresh games: keep fresh, save cache, not stale.
+        let fresh = make_snapshot("p1", 75, vec![make_game(10, 1000, true)]);
+        let cached = make_snapshot("p1", 50, vec![make_game(1, 500, false)]);
+        let resolved = resolve_fresh_snapshot(fresh, Some(cached), Some(vec![make_game(2, 600, true)]));
+        assert!(resolved.save_cache);
+        assert!(!resolved.stale);
+        assert!(resolved.message.is_none());
+        assert_eq!(resolved.snapshot.games.iter().map(|g| g.id).collect::<Vec<_>>(), vec![10]);
+
+        // 2. Empty fresh games + same-puuid cache with games: merge cached games into live rank/summoner, never overwrite cache.
+        let fresh = make_snapshot("p1", 75, vec![]);
+        let cached = make_snapshot("p1", 50, vec![make_game(1, 500, true)]);
+        let resolved = resolve_fresh_snapshot(fresh, Some(cached), Some(vec![make_game(2, 600, false)]));
+        assert!(!resolved.save_cache);
+        assert!(resolved.stale);
+        assert_eq!(resolved.snapshot.rank.as_ref().map(|r| r.lp), Some(75), "keeps live rank");
+        assert_eq!(resolved.snapshot.games.iter().map(|g| g.id).collect::<Vec<_>>(), vec![1]);
+        assert_eq!(resolved.snapshot.summaries["all"].champions.len(), 1);
+
+        // 3. Empty fresh games + different-puuid cache + u.gg fallback: merge u.gg games, never overwrite cache.
+        let fresh = make_snapshot("p2", 90, vec![]);
+        let other_cached = make_snapshot("p1", 50, vec![make_game(1, 500, true)]);
+        let resolved = resolve_fresh_snapshot(
+            fresh,
+            Some(other_cached),
+            Some(vec![make_game(2, 600, false), make_game(3, 900, true)]),
+        );
+        assert!(!resolved.save_cache);
+        assert!(resolved.stale);
+        assert!(resolved.message.as_deref().is_some_and(|m| m.contains("u.gg")));
+        assert_eq!(resolved.snapshot.rank.as_ref().map(|r| r.lp), Some(90), "keeps live rank");
+        assert_eq!(resolved.snapshot.games.iter().map(|g| g.id).collect::<Vec<_>>(), vec![3, 2]);
+        assert_eq!(resolved.snapshot.summaries["all"].champions[0].wins, 1);
+        assert_eq!(resolved.snapshot.summaries["all"].champions[0].losses, 1);
+
+        // 4. Empty fresh games + no usable cache + no fallback: never overwrite cache.
+        let fresh = make_snapshot("p2", 90, vec![]);
+        let resolved = resolve_fresh_snapshot(fresh, None, None);
+        assert!(!resolved.save_cache);
+        assert!(resolved.stale);
+        assert!(resolved.snapshot.games.is_empty());
     }
 }

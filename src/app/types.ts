@@ -82,6 +82,7 @@ export type AppState = {
   readyCheckNotifications: boolean;
   koreanFont: boolean;
   customMods: boolean;
+  customModsPaused: boolean;
   customModsRiskAck: boolean;
   modsRegionBlocked: boolean;
   ltkInstalled: boolean;

@@ -480,7 +480,7 @@ mod tests {
         data["events"]["Events"] = json!([{"EventName":"GameEnd","EventTime":600}]);
         assert!(!supported(&data));
         assert!(!supported(&json!({})));
-        for queue in [0, 400, 420, 430, 440, 480, 490, 700] {
+        for queue in [0, 400, 420, 430, 440, 480, 490, 700, 710, 3130, 3140] {
             assert!(supported_session(
                 &json!({"map":{"id":11},"gameData":{"queue":{"id":queue}},"gameClient":{"isSpectating":false}})
             ));

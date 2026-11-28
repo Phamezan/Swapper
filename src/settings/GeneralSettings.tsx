@@ -39,6 +39,7 @@ type Props = {
   onLaunchTargetChange: (target: LaunchTarget) => void;
   koreanFont: boolean;
   customMods: boolean;
+  customModsPaused: boolean;
   customModsRiskAck: boolean;
   onCustomModsChange: (enabled: boolean, riskAck: boolean) => void;
   ltkInstalled: boolean;
@@ -76,6 +77,7 @@ export function GeneralSettings({
   onLaunchTargetChange,
   koreanFont,
   customMods,
+  customModsPaused,
   customModsRiskAck,
   onCustomModsChange,
   ltkInstalled,
@@ -89,6 +91,7 @@ export function GeneralSettings({
   const [openInfo, setOpenInfo] = useState<string | null>(null);
   const [confirmingMods, setConfirmingMods] = useState(false);
   const changeCustomMods = (checked: boolean) => {
+    if (customModsPaused) return;
     if (checked && !customModsRiskAck) { setConfirmingMods(true); return; }
     onCustomModsChange(checked, false);
   };
@@ -128,11 +131,13 @@ export function GeneralSettings({
       <div className="setting-row">
         <div className="setting-copy">
           <label htmlFor="custom-mods-switch">Custom mods</label>
-          <p>Enables a marketplace section where you can browse and install custom mods.</p>
+          <p>{customModsPaused
+            ? "Custom mods are paused after a Vanguard update broke LTK Manager."
+            : "Enables a marketplace section where you can browse and install custom mods."}</p>
         </div>
-        <Switch id="custom-mods-switch" checked={customMods} disabled={busy} onCheckedChange={changeCustomMods} aria-label="Custom mods" />
+        <Switch id="custom-mods-switch" checked={customMods && !customModsPaused} disabled={busy || customModsPaused} onCheckedChange={changeCustomMods} aria-label="Custom mods" />
       </div>
-      {confirmingMods && <div className="deceive-notice is-warn" role="alertdialog" aria-label="Custom mods warning">
+      {confirmingMods && !customModsPaused && <div className="deceive-notice is-warn" role="alertdialog" aria-label="Custom mods warning">
         <p>Mods can break after patches and are against Riot&apos;s rules. Use at your own risk.</p>
         <div>
           <Button variant="outline" onClick={() => setConfirmingMods(false)}>Cancel</Button>

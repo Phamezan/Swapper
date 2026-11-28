@@ -211,7 +211,7 @@ pub fn eligible(value: &Value) -> bool {
     value["mapId"] == 11
         && matches!(
             value["queueId"].as_u64(),
-            Some(400 | 420 | 430 | 440 | 480 | 490 | 700)
+            Some(400 | 420 | 430 | 440 | 480 | 490 | 700 | 710)
         )
         && value["gameDuration"].as_u64().unwrap_or(0) >= 300
 }
@@ -271,7 +271,8 @@ pub fn game(value: &Value, player: &Summoner) -> Option<Game> {
         id: value["gameId"].as_u64()?,
         queue: match value["queueId"].as_u64()? {
             420 => "solo",
-            440 => "flex",
+            // 710 = Ranked 5s (premade ranked team queue); no own tab yet.
+            440 | 710 => "flex",
             700 => "clash",
             _ => "normal",
         }

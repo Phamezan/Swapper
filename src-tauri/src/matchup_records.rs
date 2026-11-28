@@ -109,7 +109,7 @@ fn position(player: &Value) -> Option<&'static str> {
 }
 
 fn draft_game(game: &Value) -> bool {
-    game["mapId"] == 11 && matches!(game["queueId"].as_u64(), Some(400 | 420 | 440))
+    game["mapId"] == 11 && matches!(game["queueId"].as_u64(), Some(400 | 420 | 440 | 710))
         && game["gameDuration"].as_u64().unwrap_or(0) >= 300
 }
 

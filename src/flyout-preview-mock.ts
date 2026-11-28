@@ -33,7 +33,7 @@ export function installFlyoutMock(options: FlyoutMockOptions = {}) {
     isSwitching: false,
     useDeceive: false, riotExe: null, riotDetected: true, deceiveDetected: true, autoApplyTopPreset: true, runeTier: "emerald_plus",
     applySpellsWithRunes: true, importItemsWithRunes: true, hotkey: initialHotkey, hotkeyActive: Boolean(initialHotkey), notificationsEnabled: true,
-    readyCheckNotifications: true, koreanFont: false, customMods: false, customModsRiskAck: false, modsRegionBlocked: false,
+    readyCheckNotifications: true, koreanFont: false, customMods: false, customModsPaused: false, customModsRiskAck: false, modsRegionBlocked: false,
     ltkInstalled: false, ltkVersion: null, ltkOutdated: false, ltkLatestVersion: null, ltkNeedsSetup: false, ltkNotice: null, remote,
   };
   const none = () => null;
