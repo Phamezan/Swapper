@@ -326,7 +326,7 @@ export function installFullAppMock(options: FullAppMockOptions = {}) {
           publishedAt: `2026-${String(1 + i).padStart(2, "0")}-11T12:00:00Z`, updatedAt: null, licence: null, pageUrl: "https://runeforge.dev/mods/x", tags: [],
         })),
       };
-      case "plugin:app|version": return "1.0.21";
+      case "plugin:app|version": return "1.0.22";
       case "full_app_search_players": {
         const connected = !params.has("stale") && !params.has("disconnected");
         const call = { query: String(a.query), online: Boolean(a.online), done: false };
